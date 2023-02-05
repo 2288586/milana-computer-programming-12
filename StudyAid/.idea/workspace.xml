@@ -13,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -48,8 +48,8 @@
       <recent name="com.studyaid.studyaid" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataPersisterTest.saveAndLoadQuizzes">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All in StudyAid">
+    <configuration name="com.studyaid.studyaid.HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.studyaid.studyaid.HelloApplication" />
       <module name="StudyAid" />
       <extension name="coverage">
@@ -88,9 +88,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataPersisterTest.saveAndLoadQuizzes" />
         <item itemvalue="JUnit.All in StudyAid" />
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="JUnit.DataPersisterTest.saveAndLoadQuizzes" />
+        <item itemvalue="Application.com.studyaid.studyaid.HelloApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -108,7 +108,7 @@
       <workItem from="1675581334158" duration="8000" />
       <workItem from="1675623988499" duration="650000" />
       <workItem from="1675624659900" duration="1504000" />
-      <workItem from="1675626228632" duration="307000" />
+      <workItem from="1675626228632" duration="1872000" />
     </task>
     <servers />
   </component>
