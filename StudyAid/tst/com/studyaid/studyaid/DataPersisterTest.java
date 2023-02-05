@@ -17,13 +17,13 @@ class DataPersisterTest {
         Question questionTwo = new Question("Question 2");
         Question questionThree = new Question("Question 3");
 
-        questionOne.addCorrectAnswer("Correct Answer 1");
-        questionTwo.addCorrectAnswer("Correct Answer 2");
-        questionThree.addCorrectAnswer("Correct Answer 3");
+        questionOne.addAnswer(new Answer("Correct Answer 1", true));
+        questionTwo.addAnswer(new Answer("Correct Answer 2", true));
+        questionThree.addAnswer(new Answer("Correct Answer 3", true));
 
-        questionOne.addIncorrectAnswer("Incorrect Answer 1");
-        questionTwo.addIncorrectAnswer("Incorrect Answer 2");
-        questionThree.addIncorrectAnswer("Incorrect Answer 3");
+        questionOne.addAnswer(new Answer("Incorrect Answer 1", false));
+        questionTwo.addAnswer(new Answer("Incorrect Answer 2", false));
+        questionThree.addAnswer(new Answer("Incorrect Answer 3", false));
 
         quizOne.addQuestion(questionOne);
         quizOne.addQuestion(questionTwo);

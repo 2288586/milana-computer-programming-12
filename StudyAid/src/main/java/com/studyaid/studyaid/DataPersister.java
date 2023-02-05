@@ -25,14 +25,10 @@ public class DataPersister {
                 for (Question question : quiz.getQuestions()) {
                     bufferedWriter.write(question.getQuestion() + "\n");
 
-                    bufferedWriter.write(question.getCorrectAnswers().size() + "\n");
-                    for (String answer : question.getCorrectAnswers()) {
-                        bufferedWriter.write(answer + "\n");
-                    }
-
-                    bufferedWriter.write(question.getIncorrectAnswers().size() + "\n");
-                    for (String answer : question.getIncorrectAnswers()) {
-                        bufferedWriter.write(answer + "\n");
+                    bufferedWriter.write(question.getAnswers().size() + "\n");
+                    for (Answer answer : question.getAnswers()) {
+                        bufferedWriter.write(answer.getAnswer() + "\n");
+                        bufferedWriter.write(answer.getCorrect() + "\n");
                     }
                 }
             }
@@ -47,40 +43,49 @@ public class DataPersister {
     public static Collection<Quiz> load(String fileName) throws DataPersisterException {
         ArrayList<Quiz> quizzes;
 
+        String line;
+        int numOfQuizzes;
+
+        Quiz quiz;
+        int numOfQuestions;
+
+        Question question;
+        int numOfAnswers;
+
+        String answerAnswer;
+        boolean answerCorrect;
+        Answer answer;
+
         try {
             File file = new File(fileName);
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            String line = bufferedReader.readLine();
-            int numOfQuizzes = Integer.parseInt(line);
+            line = bufferedReader.readLine();
+            numOfQuizzes = Integer.parseInt(line);
             quizzes = new ArrayList<>(numOfQuizzes);
 
             for (int i = 0; i < numOfQuizzes; i++) {
                 line = bufferedReader.readLine();
-                Quiz quiz = new Quiz(line);
+                quiz = new Quiz(line);
 
                 line = bufferedReader.readLine();
-                int numOfQuestions = Integer.parseInt(line);
+                numOfQuestions = Integer.parseInt(line);
 
                 for (int j = 0; j < numOfQuestions; j++) {
                     line = bufferedReader.readLine();
-                    Question question = new Question(line);
+                    question = new Question(line);
 
                     line = bufferedReader.readLine();
-                    int numOfCorrectAnswers = Integer.parseInt(line);
+                    numOfAnswers = Integer.parseInt(line);
 
-                    for (int k = 0; k < numOfCorrectAnswers; k++) {
+                    for (int k = 0; k < numOfAnswers; k++) {
+                        answerAnswer = bufferedReader.readLine();
                         line = bufferedReader.readLine();
-                        question.addCorrectAnswer(line);
-                    }
+                        answerCorrect = Boolean.parseBoolean(line);
 
-                    line = bufferedReader.readLine();
-                    int numOfIncorrectAnswers = Integer.parseInt(line);
-
-                    for (int l = 0; l < numOfIncorrectAnswers; l++) {
-                        line = bufferedReader.readLine();
-                        question.addIncorrectAnswer(line);
+                        answer = new Answer(answerAnswer, answerCorrect);
+                        question.addAnswer(answer);
                     }
 
                     quiz.addQuestion(question);

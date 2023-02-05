@@ -2,24 +2,28 @@
 Quiz 1
 2
 Question 1
-1
+2
 Correct Answer 1
-1
+true
 Incorrect Answer 1
+false
 Question 2
-1
+2
 Correct Answer 2
-1
+true
 Incorrect Answer 2
+false
 Quiz 2
 2
 Question 1
-1
+2
 Correct Answer 1
-1
+true
 Incorrect Answer 1
+false
 Question 3
-1
+2
 Correct Answer 3
-1
+true
 Incorrect Answer 3
+false

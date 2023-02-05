@@ -30,16 +30,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -48,7 +48,7 @@
       <recent name="com.studyaid.studyaid" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in StudyAid">
+  <component name="RunManager" selected="JUnit.DataPersisterTest.saveAndLoadQuizzes">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.studyaid.studyaid.HelloApplication" />
       <module name="StudyAid" />
@@ -70,8 +70,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DataPersisterTest.saveAndLoadQuizzes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="StudyAid" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.studyaid.studyaid.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.studyaid.studyaid" />
+      <option name="MAIN_CLASS_NAME" value="com.studyaid.studyaid.DataPersisterTest" />
+      <option name="METHOD_NAME" value="saveAndLoadQuizzes" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataPersisterTest.saveAndLoadQuizzes" />
         <item itemvalue="JUnit.All in StudyAid" />
         <item itemvalue="Application.HelloApplication" />
       </list>
@@ -87,11 +104,19 @@
       <updated>1675575195187</updated>
       <workItem from="1675575197495" duration="1075000" />
       <workItem from="1675576407498" duration="250000" />
-      <workItem from="1675576664857" duration="3823000" />
+      <workItem from="1675576664857" duration="3948000" />
+      <workItem from="1675581334158" duration="8000" />
+      <workItem from="1675623988499" duration="650000" />
+      <workItem from="1675624659900" duration="1504000" />
+      <workItem from="1675626228632" duration="307000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -5,13 +5,11 @@ import java.util.Collection;
 
 public class Question {
     private String question;
-    private final ArrayList<String> correctAnswers;
-    private final ArrayList<String> incorrectAnswers;
+    private final ArrayList<Answer> answers;
 
     public Question(String question) {
         this.question = question;
-        this.correctAnswers = new ArrayList<>();
-        this.incorrectAnswers = new ArrayList<>();
+        this.answers = new ArrayList<>();
     }
 
     public String getQuestion() {
@@ -22,20 +20,12 @@ public class Question {
         this.question = question;
     }
 
-    public Collection<String> getCorrectAnswers() {
-        return correctAnswers;
+    public Collection<Answer> getAnswers() {
+        return answers;
     }
 
-    public void addCorrectAnswer(String correctAnswer) {
-        correctAnswers.add(correctAnswer);
-    }
-
-    public Collection<String> getIncorrectAnswers() {
-        return incorrectAnswers;
-    }
-
-    public void addIncorrectAnswer(String incorrectAnswer) {
-        incorrectAnswers.add(incorrectAnswer);
+    public void addAnswer(Answer answer) {
+        answers.add(answer);
     }
 
     @Override
@@ -48,7 +38,7 @@ public class Question {
         Question question = (Question) object;
         boolean isEqual = false;
 
-        if (this.question.equals(question.getQuestion()) && this.correctAnswers.equals(question.getCorrectAnswers()) && this.incorrectAnswers.equals(question.getIncorrectAnswers())) {
+        if (this.question.equals(question.getQuestion()) && this.answers.equals(question.getAnswers())) {
             isEqual = true;
         }
 
