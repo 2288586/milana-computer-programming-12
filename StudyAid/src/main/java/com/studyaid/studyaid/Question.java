@@ -1,7 +1,7 @@
 package com.studyaid.studyaid;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class Question {
     private String question;
@@ -20,7 +20,7 @@ public class Question {
         this.question = question;
     }
 
-    public Collection<Answer> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 
@@ -38,7 +38,7 @@ public class Question {
         Question question = (Question) object;
         boolean isEqual = false;
 
-        if (this.question.equals(question.getQuestion()) && this.answers.equals(question.getAnswers())) {
+        if (question != null && this.question.equals(question.getQuestion()) && this.answers.equals(question.getAnswers())) {
             isEqual = true;
         }
 

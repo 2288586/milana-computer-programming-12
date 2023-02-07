@@ -42,7 +42,7 @@ public class Quiz {
         Quiz quiz = (Quiz) object;
         boolean isEqual = false;
 
-        if (this.name.equals(quiz.getName()) && this.questions.equals(quiz.getQuestions())) {
+        if (quiz != null && this.name.equals(quiz.getName()) && this.questions.equals(quiz.getQuestions())) {
             isEqual = true;
         }
 

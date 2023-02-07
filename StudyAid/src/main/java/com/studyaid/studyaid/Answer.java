@@ -35,7 +35,7 @@ public class Answer {
         Answer answer = (Answer) object;
         boolean isEqual = false;
 
-        if (this.answer.equals(answer.getAnswer()) && this.correct == answer.getCorrect()) {
+        if (answer != null && this.answer.equals(answer.getAnswer()) && this.correct == answer.getCorrect()) {
             isEqual = true;
         }
 
