@@ -39,7 +39,7 @@
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="5.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="425.0" promptText="Quiz Name (Required)" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <TextField fx:id="newQuizTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="425.0" promptText="Quiz Name (Required)" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                               <ChoiceBox fx:id="allQuizzesChoiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                               <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <children>
@@ -49,15 +49,15 @@
                               </AnchorPane>
                               <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                  <children>
-                                    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="New Quiz" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="272.5" AnchorPane.topAnchor="21.0">
+                                    <Button fx:id="newQuizButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNewQuizButtonClick" prefHeight="30.0" prefWidth="100.0" text="New Quiz" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="272.5" AnchorPane.topAnchor="21.0">
                                        <font>
                                           <Font size="12.0" />
                                        </font></Button>
-                                    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Save Quiz" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="162.5" AnchorPane.rightAnchor="162.5" AnchorPane.topAnchor="21.0">
+                                    <Button fx:id="saveQuizButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onSaveQuizButtonClick" prefHeight="30.0" prefWidth="100.0" text="Save Quiz" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="162.5" AnchorPane.rightAnchor="162.5" AnchorPane.topAnchor="21.0">
                                        <font>
                                           <Font size="12.0" />
                                        </font></Button>
-                                    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Delete Quiz" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="272.5" AnchorPane.rightAnchor="52.5" AnchorPane.topAnchor="21.0">
+                                    <Button fx:id="deleteQuizButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onDeleteQuizButtonClick" prefHeight="30.0" prefWidth="100.0" text="Delete Quiz" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="272.5" AnchorPane.rightAnchor="52.5" AnchorPane.topAnchor="21.0">
                                        <font>
                                           <Font size="12.0" />
                                        </font>
