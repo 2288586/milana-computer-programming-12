@@ -1,7 +1,7 @@
 package com.studyaid.studyaid;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class Quiz {
     private String name;
@@ -12,7 +12,7 @@ public class Quiz {
         questions = new ArrayList<>();
     }
 
-    public Collection<Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
