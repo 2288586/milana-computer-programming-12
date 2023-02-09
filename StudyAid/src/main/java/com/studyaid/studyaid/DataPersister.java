@@ -28,7 +28,7 @@ public class DataPersister {
                     bufferedWriter.write(question.getAnswers().size() + "\n");
                     for (Answer answer : question.getAnswers()) {
                         bufferedWriter.write(answer.getAnswer() + "\n");
-                        bufferedWriter.write(answer.getCorrect() + "\n");
+                        bufferedWriter.write(answer.isCorrect() + "\n");
                     }
                 }
             }

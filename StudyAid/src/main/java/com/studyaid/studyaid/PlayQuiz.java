@@ -30,16 +30,30 @@ public class PlayQuiz {
         return currentQuestion;
     }
 
-    public void submitAnswer(Answer answer) {
+    public boolean checkSubmittedAnswers(Question question, List<Answer> answers) {
         numOfQuestionsAnswered++;
+        boolean correctAnswer = true;
 
-        if (answer.getCorrect()) {
-            numOfCorrectAnswers++;
+        for (Answer answer : answers) {
+            if (!answer.isCorrect()) {
+                correctAnswer = false;
+                break;
+            }
         }
+
+        if (answers.size() != question.getCorrectAnswers().size()) {
+            correctAnswer = false;
+        }
+
+        if (correctAnswer) {
+            numOfCorrectAnswers++;
+            return true;
+        }
+
+        return false;
     }
 
     public String getCurrentScore() {
         return "Score: " + numOfCorrectAnswers + "/" + numOfQuestionsAnswered;
     }
-
 }

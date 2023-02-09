@@ -17,7 +17,7 @@ public class Answer {
         this.answer = answer;
     }
 
-    public boolean getCorrect() {
+    public boolean isCorrect() {
         return correct;
     }
 
@@ -35,7 +35,7 @@ public class Answer {
         Answer answer = (Answer) object;
         boolean isEqual = false;
 
-        if (answer != null && this.answer.equals(answer.getAnswer()) && this.correct == answer.getCorrect()) {
+        if (answer != null && this.answer.equals(answer.getAnswer()) && this.correct == answer.isCorrect()) {
             isEqual = true;
         }
 

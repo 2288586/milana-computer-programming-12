@@ -2,7 +2,10 @@ package com.studyaid.studyaid;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class PlayQuizTest {
 
@@ -13,37 +16,72 @@ class PlayQuizTest {
         Question questionOne = new Question("Question 1");
         Question questionTwo = new Question("Question 2");
         Question questionThree = new Question("Question 3");
+        Question questionFour = new Question("Question 4");
 
-        questionOne.addAnswer(new Answer("Correct Answer 1", true));
-        questionTwo.addAnswer(new Answer("Correct Answer 2", true));
-        questionThree.addAnswer(new Answer("Correct Answer 3", true));
+        questionOne.addAnswer(new Answer("Correct Answer", true));
+        questionOne.addAnswer(new Answer("Correct Answer", true));
 
-        questionOne.addAnswer(new Answer("Incorrect Answer 1", false));
-        questionTwo.addAnswer(new Answer("Incorrect Answer 2", false));
-        questionThree.addAnswer(new Answer("Incorrect Answer 3", false));
+        questionTwo.addAnswer(new Answer("Correct Answer", true));
+        questionTwo.addAnswer(new Answer("Incorrect Answer", false));
+
+        questionThree.addAnswer(new Answer("Incorrect Answer", false));
+        questionThree.addAnswer(new Answer("Incorrect Answer", false));
+
+        questionFour.addAnswer(new Answer("Correct Answer", true));
+        questionFour.addAnswer(new Answer("Incorrect Answer", false));
 
         quiz.addQuestion(questionOne);
         quiz.addQuestion(questionTwo);
-
+        quiz.addQuestion(questionThree);
+        quiz.addQuestion(questionFour);
         PlayQuiz playQuiz = new PlayQuiz(quiz);
-        Question question;
-        Answer answer;
 
-        int answerCounter = 0;
-        int correctAnswerCounter = 0;
+        Question question = playQuiz.getNextQuestion();
+        Answer answerOne = questionOne.getAnswers().get(0);
+        Answer answerTwo = questionOne.getAnswers().get(1);
 
-        while ((question = playQuiz.getNextQuestion()) != null) {
-            answerCounter++;
-            answer = question.getAnswers().get(0);
+        ArrayList<Answer> answers = new ArrayList<>();
+        answers.add(answerOne);
+        answers.add(answerTwo);
 
-            if (answer.getCorrect()) {
-                correctAnswerCounter++;
-            }
+        playQuiz.checkSubmittedAnswers(question, answers);
+        String currentScore = playQuiz.getCurrentScore();
+        assertEquals("Score: " + 1 + "/" + 1, currentScore);
 
-            playQuiz.submitAnswer(answer);
-            String currentScore = playQuiz.getCurrentScore();
+        question = playQuiz.getNextQuestion();
+        answerOne = questionTwo.getAnswers().get(0);
+        answerTwo = questionTwo.getAnswers().get(1);
 
-            assertEquals("Score: " + correctAnswerCounter + "/" + answerCounter, currentScore);
-        }
+        answers.clear();
+        answers.add(answerOne);
+        answers.add(answerTwo);
+
+        playQuiz.checkSubmittedAnswers(question, answers);
+        currentScore = playQuiz.getCurrentScore();
+        assertEquals("Score: " + 1 + "/" + 2, currentScore);
+
+        question = playQuiz.getNextQuestion();
+        answerOne = questionThree.getAnswers().get(0);
+        answerTwo = questionThree.getAnswers().get(1);
+
+        answers.clear();
+        answers.add(answerOne);
+        answers.add(answerTwo);
+
+        playQuiz.checkSubmittedAnswers(question, answers);
+        currentScore = playQuiz.getCurrentScore();
+        assertEquals("Score: " + 1 + "/" + 3, currentScore);
+
+        question = playQuiz.getNextQuestion();
+        answerOne = questionFour.getAnswers().get(0);
+
+        answers.clear();
+        answers.add(answerOne);
+
+        playQuiz.checkSubmittedAnswers(question, answers);
+        currentScore = playQuiz.getCurrentScore();
+        assertEquals("Score: " + 2 + "/" + 4, currentScore);
+
+        assertNull(playQuiz.getNextQuestion());
     }
 }

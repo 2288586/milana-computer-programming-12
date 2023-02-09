@@ -3,7 +3,7 @@ package com.studyaid.studyaid;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,7 +22,7 @@ class AnswerOrderRandomizerTest {
         answers.add(answerTwo);
         answers.add(answerThree);
 
-        Collection<Answer> randomizedAnswers = AnswerOrderRandomizer.randomize(answers);
+        List<Answer> randomizedAnswers = AnswerOrderRandomizer.randomize(answers);
 
         assertEquals(answers.size(), randomizedAnswers.size());
 

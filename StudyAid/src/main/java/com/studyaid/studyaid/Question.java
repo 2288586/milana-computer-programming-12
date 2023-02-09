@@ -24,6 +24,18 @@ public class Question {
         return answers;
     }
 
+    public List<Answer> getCorrectAnswers() {
+        ArrayList<Answer> correctAnswers = new ArrayList<>();
+
+        for (Answer answer : answers) {
+            if (answer.isCorrect()) {
+                correctAnswers.add(answer);
+            }
+        }
+
+        return correctAnswers;
+    }
+
     public void addAnswer(Answer answer) {
         answers.add(answer);
     }

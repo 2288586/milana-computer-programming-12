@@ -1,11 +1,11 @@
 package com.studyaid.studyaid;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class AnswerOrderRandomizer {
 
-    public static Collection<Answer> randomize(Collection<Answer> answers) {
+    public static List<Answer> randomize(List<Answer> answers) {
         ArrayList<Answer> answersToRandomize = new ArrayList<>(answers);
         ArrayList<Answer> randomizedAnswers = new ArrayList<>();
 
