@@ -48,6 +48,10 @@ public class StudyAidController {
     public CheckBox answerThreeCheckBox;
     public CheckBox answerFourCheckBox;
 
+    public Button newQuestionButton;
+    public Button saveQuestionButton;
+    public Button deleteQuestionButton;
+
     public ChoiceBox<Quiz> playQuizzesChoiceBox;
     public Button playQuizButton;
 
@@ -161,6 +165,7 @@ public class StudyAidController {
         quizQuestionsListView.setItems(allQuestions);
 
         clearQuestionGrid();
+        disableQuestionGrid(true);
 
         newQuizButton.setDisable(true);
         saveQuizButton.setDisable(false);
@@ -191,6 +196,8 @@ public class StudyAidController {
                 newQuizButton.setDisable(false);
                 saveQuizButton.setDisable(true);
 
+                disableQuestionGrid(false);
+
                 populateData(quizzes);
                 allQuizzesChoiceBox.setValue(quiz);
 
@@ -212,6 +219,8 @@ public class StudyAidController {
             saveQuizButton.setDisable(true);
 
             statusLabel.setText("Successfully deleted quiz.");
+
+            disableQuestionGrid(false);
             populateData(quizzes);
 
         } else {
@@ -324,5 +333,21 @@ public class StudyAidController {
         answerThreeCheckBox.setSelected(false);
         answerFourTextField.setText("");
         answerFourCheckBox.setSelected(false);
+    }
+
+    private void disableQuestionGrid(boolean disable) {
+        questionNameTextField.setDisable(disable);
+        answerOneTextField.setDisable(disable);
+        answerOneCheckBox.setDisable(disable);
+        answerTwoTextField.setDisable(disable);
+        answerTwoCheckBox.setDisable(disable);
+        answerThreeTextField.setDisable(disable);
+        answerThreeCheckBox.setDisable(disable);
+        answerFourTextField.setDisable(disable);
+        answerFourTextField.setDisable(disable);
+
+        newQuestionButton.setDisable(disable);
+        saveQuestionButton.setDisable(disable);
+        deleteQuestionButton.setDisable(disable);
     }
 }
