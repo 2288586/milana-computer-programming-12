@@ -19,6 +19,7 @@ public class StudyAidController {
     private final String fileName = "study_aid_quizzes.txt";
     private Collection<Quiz> quizzes = new ArrayList<>();
     private boolean inCreateQuizMode = false;
+    private boolean inCreateQuestionMode = false;
     private boolean inPlayQuizMode = false;
 
     private PlayQuiz playQuiz;
@@ -74,6 +75,7 @@ public class StudyAidController {
 
     @FXML
     private void initialize() {
+        //TODO: Handle Empty File (No Quizzes)
         try {
             quizzes = DataPersister.load(fileName);
             statusLabel.setText("Successfully loaded data.");
@@ -115,6 +117,10 @@ public class StudyAidController {
 
             answerFourTextField.setText(answers.get(3).getAnswer());
             answerFourCheckBox.setSelected(answers.get(3).isCorrect());
+
+            saveQuestionButton.setDisable(true);
+        } else {
+            saveQuestionButton.setDisable(false);
         }
     }
 
@@ -126,9 +132,13 @@ public class StudyAidController {
             quizQuestionsListView.setItems(allQuestions);
             if (allQuestions.size() > 0) {
                 quizQuestionsListView.getSelectionModel().select(0);
+                disableQuestionGrid(false);
+                saveQuestionButton.setDisable(true);
             } else {
                 clearQuestionGrid();
             }
+        } else {
+            disableQuestionGrid(true);
         }
     }
 
@@ -237,6 +247,76 @@ public class StudyAidController {
                 } catch (Exception exception) {
                     statusLabel.setText("Failed to delete quiz.");
                 }
+            }
+        }
+    }
+
+    public void onNewQuestionButtonClick() {
+        inCreateQuestionMode = true;
+        quizQuestionsListView.getSelectionModel().select(null);
+        clearQuestionGrid();
+    }
+
+    public void onSaveQuestionButtonClick() {
+        Quiz quiz = allQuizzesChoiceBox.getValue();
+        String questionName = questionNameTextField.getText();
+
+        Answer answerOne = new Answer(answerOneTextField.getText(), answerOneCheckBox.isSelected());
+        Answer answerTwo = new Answer(answerTwoTextField.getText(), answerTwoCheckBox.isSelected());
+        Answer answerThree = new Answer(answerThreeTextField.getText(), answerThreeCheckBox.isSelected());
+        Answer answerFour = new Answer(answerFourTextField.getText(), answerFourCheckBox.isSelected());
+
+        if (questionName == null || questionName.equals("")) {
+            statusLabel.setText("Cannot save, quiz name is required.");
+        } else if (answerOne.getAnswer() == null || answerOne.getAnswer().equals("") || answerTwo.getAnswer() == null || answerTwo.getAnswer().equals("") || answerThree.getAnswer() == null || answerThree.getAnswer().equals("") || answerFour.getAnswer() == null || answerFour.getAnswer().equals("")) {
+            statusLabel.setText("Cannot save, four answers are required.");
+        } else {
+            Question question = new Question(questionName);
+
+            question.addAnswer(answerOne);
+            question.addAnswer(answerTwo);
+            question.addAnswer(answerThree);
+            question.addAnswer(answerFour);
+
+            quiz.addQuestion(question);
+
+            try {
+                DataPersister.save(fileName, quizzes);
+                statusLabel.setText("Successfully saved question.");
+                populateData(quizzes);
+
+                inCreateQuestionMode = false;
+
+                allQuizzesChoiceBox.getSelectionModel().select(quiz);
+                quizQuestionsListView.getSelectionModel().select(question);
+
+            } catch (Exception exception) {
+                statusLabel.setText("Failed to save question.");
+            }
+        }
+    }
+
+    public void onDeleteQuestionButtonClick() {
+        Quiz quiz = allQuizzesChoiceBox.getValue();
+        Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
+
+        if ((question == null || question.getQuestion().equals("")) && !inCreateQuestionMode) {
+            statusLabel.setText("Cannot delete, please select question.");
+        } else {
+
+            quiz.removeQuestion(question);
+
+            try {
+                DataPersister.save(fileName, quizzes);
+                statusLabel.setText("Successfully deleted question.");
+                populateData(quizzes);
+
+                inCreateQuestionMode = false;
+                allQuizzesChoiceBox.getSelectionModel().select(quiz);
+
+            } catch (Exception exception) {
+                quiz.addQuestion(question);
+                statusLabel.setText("Failed to delete question.");
             }
         }
     }
