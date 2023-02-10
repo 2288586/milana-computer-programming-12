@@ -176,7 +176,7 @@
                            </children>
                         </GridPane>
                         <Label fx:id="playQuizStatusLabel" alignment="CENTER" layoutX="248.0" layoutY="407.0" prefHeight="25.0" prefWidth="500.0" textAlignment="CENTER" visible="false" AnchorPane.bottomAnchor="366.75" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="252.0" AnchorPane.topAnchor="326.75" />
-                        <Button fx:id="nextQuestionButton" layoutX="496.0" layoutY="445.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Next Question" visible="false" AnchorPane.bottomAnchor="326.75" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="361.75" />
+                        <Button fx:id="nextQuestionButton" layoutX="496.0" layoutY="445.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNextQuestionButtonClick" prefHeight="30.0" prefWidth="100.0" text="Next Question" visible="false" AnchorPane.bottomAnchor="326.75" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="361.75" />
                      </children></AnchorPane>
             </content>
           </Tab>

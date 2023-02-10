@@ -152,7 +152,6 @@ public class StudyAidController {
             clearQuestionGrid();
         }
 
-        //TODO: Call populateData After Finishing Quiz
         if (!inPlayQuizMode) {
             playQuizzesChoiceBox.setItems(allQuizzesChoices);
 
@@ -323,61 +322,27 @@ public class StudyAidController {
 
     public void onPlayButtonQuizClick() {
         inPlayQuizMode = true;
-
-        playQuizButton.setDisable(true);
         playQuizzesChoiceBox.setDisable(true);
+        playQuizButton.setDisable(true);
 
-        playAnswerOneCheckBox.setVisible(true);
-        playAnswerTwoCheckBox.setVisible(true);
-        playAnswerThreeCheckBox.setVisible(true);
-        playAnswerFourCheckBox.setVisible(true);
-
-        submitAnswersButton.setVisible(true);
+        togglePlayVisibility(true, false);
+        scoreLabel.setText("Score: ");
 
         Quiz quiz = playQuizzesChoiceBox.getSelectionModel().getSelectedItem();
         playQuiz = new PlayQuiz(quiz);
-
         question = playQuiz.getNextQuestion();
 
         if (question != null) {
-            List<Answer> answers = question.getAnswers();
-            List<Answer> randomizedAnswers = AnswerOrderRandomizer.randomize(answers);
-
-            playQuestionNameLabel.setText(question.getQuestion());
-
-            answerOne = randomizedAnswers.get(0);
-            answerTwo = randomizedAnswers.get(1);
-            answerThree = randomizedAnswers.get(2);
-            answerFour = randomizedAnswers.get(3);
-
-            playAnswerOneLabel.setText(answerOne.getAnswer());
-            playAnswerTwoLabel.setText(answerTwo.getAnswer());
-            playAnswerThreeLabel.setText(answerThree.getAnswer());
-            playAnswerFourLabel.setText(answerFour.getAnswer());
+            displayQuestion();
         } else {
             //TODO: Handle No Questions
         }
     }
 
     public void onSubmitAnswersButtonClick() {
-        submitAnswersButton.setVisible(false);
-        playQuestionNameLabel.setVisible(false);
-
-        playAnswerOneLabel.setVisible(false);
-        playAnswerTwoLabel.setVisible(false);
-        playAnswerThreeLabel.setVisible(false);
-        playAnswerFourLabel.setVisible(false);
-
-        playAnswerOneCheckBox.setVisible(false);
-        playAnswerTwoCheckBox.setVisible(false);
-        playAnswerThreeCheckBox.setVisible(false);
-        playAnswerFourCheckBox.setVisible(false);
-
-        playQuizStatusLabel.setVisible(true);
-        nextQuestionButton.setVisible(true);
+        togglePlayVisibility(false, true);
 
         ArrayList<Answer> answers = new ArrayList<>();
-
         if (playAnswerOneCheckBox.isSelected()) {
             answers.add(answerOne);
         }
@@ -399,8 +364,27 @@ public class StudyAidController {
         } else {
             playQuizStatusLabel.setText("Incorrect...");
         }
+    }
 
-        //TODO: Handle Last Question
+    public void onNextQuestionButtonClick() {
+        question = playQuiz.getNextQuestion();
+        clearPlayCheckboxes();
+
+        if (question != null) {
+            togglePlayVisibility(true, false);
+            displayQuestion();
+        } else {
+            inPlayQuizMode = false;
+            populateData(quizzes);
+            //TODO: Select Recently Played Quiz (Unless Deleted)
+
+            //TODO: Add Quiz Name
+            playQuizStatusLabel.setText("End Of Quiz. Final " + playQuiz.getCurrentScore());
+            nextQuestionButton.setVisible(false);
+
+            playQuizzesChoiceBox.setDisable(false);
+            playQuizButton.setDisable(false);
+        }
     }
 
     private void clearQuestionGrid() {
@@ -429,5 +413,47 @@ public class StudyAidController {
         newQuestionButton.setDisable(disable);
         saveQuestionButton.setDisable(disable);
         deleteQuestionButton.setDisable(disable);
+    }
+
+    private void togglePlayVisibility(boolean answeringQuestion, boolean viewingResult) {
+        playQuestionNameLabel.setVisible(answeringQuestion);
+        submitAnswersButton.setVisible(answeringQuestion);
+
+        playAnswerOneLabel.setVisible(answeringQuestion);
+        playAnswerTwoLabel.setVisible(answeringQuestion);
+        playAnswerThreeLabel.setVisible(answeringQuestion);
+        playAnswerFourLabel.setVisible(answeringQuestion);
+
+        playAnswerOneCheckBox.setVisible(answeringQuestion);
+        playAnswerTwoCheckBox.setVisible(answeringQuestion);
+        playAnswerThreeCheckBox.setVisible(answeringQuestion);
+        playAnswerFourCheckBox.setVisible(answeringQuestion);
+
+        playQuizStatusLabel.setVisible(viewingResult);
+        nextQuestionButton.setVisible(viewingResult);
+    }
+
+    private void displayQuestion() {
+        List<Answer> answers = question.getAnswers();
+        List<Answer> randomizedAnswers = AnswerOrderRandomizer.randomize(answers);
+
+        playQuestionNameLabel.setText(question.getQuestion());
+
+        answerOne = randomizedAnswers.get(0);
+        answerTwo = randomizedAnswers.get(1);
+        answerThree = randomizedAnswers.get(2);
+        answerFour = randomizedAnswers.get(3);
+
+        playAnswerOneLabel.setText(answerOne.getAnswer());
+        playAnswerTwoLabel.setText(answerTwo.getAnswer());
+        playAnswerThreeLabel.setText(answerThree.getAnswer());
+        playAnswerFourLabel.setText(answerFour.getAnswer());
+    }
+
+    private void clearPlayCheckboxes() {
+        playAnswerOneCheckBox.setSelected(false);
+        playAnswerTwoCheckBox.setSelected(false);
+        playAnswerThreeCheckBox.setSelected(false);
+        playAnswerFourCheckBox.setSelected(false);
     }
 }
