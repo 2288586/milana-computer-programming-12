@@ -61,7 +61,7 @@
                                  </children>
                               </AnchorPane>
                               <Label fx:id="statusLabel" prefHeight="36.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                              <TextField fx:id="questionNameTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleQuestionNameTextField" onKeyTyped="#handleAnswerGridChange" prefHeight="25.0" prefWidth="425.0" promptText="Question (Required)" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <TextField fx:id="questionNameTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#handleAnswerGridChange" prefHeight="25.0" prefWidth="425.0" promptText="Question (Required)" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                               <GridPane GridPane.columnIndex="3" GridPane.rowIndex="2">
                                 <columnConstraints>
                                   <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" percentWidth="90.0" />

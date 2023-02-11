@@ -21,10 +21,9 @@ public class StudyAidController {
 
     private static final String fileName = "study_aid_quizzes.txt";
     private static List<Quiz> quizzes = new ArrayList<>();
-    private boolean inCreateQuizMode = false;
-    private boolean inCreateQuestionMode = false;
     private boolean inPlayQuizMode = false;
 
+    private boolean handlerIsEnabled = true;
     private PlayQuiz playQuiz;
     private Question question;
 
@@ -118,44 +117,48 @@ public class StudyAidController {
     }
 
     private void handleAllQuizzesChoiceBox() {
-        Quiz quiz = allQuizzesChoiceBox.getValue();
+        if (handlerIsEnabled) {
+            Quiz quiz = allQuizzesChoiceBox.getValue();
 
-        if (quiz != null) {
-            ObservableList<Question> questions = FXCollections.observableArrayList(quiz.getQuestions());
-            quizQuestionsListView.setItems(questions);
-            disableQuestionGrid(false);
+            if (quiz != null) {
+                ObservableList<Question> questions = FXCollections.observableArrayList(quiz.getQuestions());
+                quizQuestionsListView.setItems(questions);
+                disableQuestionGrid(false);
 
-            if (questions.size() > 0) {
-                quizQuestionsListView.getSelectionModel().select(0);
+                if (questions.size() > 0) {
+                    quizQuestionsListView.getSelectionModel().select(0);
+                } else {
+                    clearQuestionGrid();
+                }
             } else {
-                clearQuestionGrid();
+                disableQuestionGrid(true);
             }
-        } else {
-            disableQuestionGrid(true);
         }
     }
 
     private void handleQuizQuestionsListView() {
-        Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
+        if (handlerIsEnabled) {
+            Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
 
-        if (question != null) {
-            List<Answer> answers = question.getAnswers();
+            if (question != null) {
+                List<Answer> answers = question.getAnswers();
 
-            questionNameTextField.setText(question.getQuestion());
+                questionNameTextField.setText(question.getQuestion());
 
-            answerOneTextField.setText(answers.get(0).getAnswer());
-            answerOneCheckBox.setSelected(answers.get(0).isCorrect());
+                answerOneTextField.setText(answers.get(0).getAnswer());
+                answerOneCheckBox.setSelected(answers.get(0).isCorrect());
 
-            answerTwoTextField.setText(answers.get(1).getAnswer());
-            answerTwoCheckBox.setSelected(answers.get(1).isCorrect());
+                answerTwoTextField.setText(answers.get(1).getAnswer());
+                answerTwoCheckBox.setSelected(answers.get(1).isCorrect());
 
-            answerThreeTextField.setText(answers.get(2).getAnswer());
-            answerThreeCheckBox.setSelected(answers.get(2).isCorrect());
+                answerThreeTextField.setText(answers.get(2).getAnswer());
+                answerThreeCheckBox.setSelected(answers.get(2).isCorrect());
 
-            answerFourTextField.setText(answers.get(3).getAnswer());
-            answerFourCheckBox.setSelected(answers.get(3).isCorrect());
-        } else {
-            clearQuestionGrid();
+                answerFourTextField.setText(answers.get(3).getAnswer());
+                answerFourCheckBox.setSelected(answers.get(3).isCorrect());
+            } else {
+                clearQuestionGrid();
+            }
         }
     }
 
@@ -187,14 +190,6 @@ public class StudyAidController {
         }
     }
 
-    public void handleQuestionNameTextField() {
-        Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
-
-        if (question != null) {
-            quizQuestionsListView.refresh();
-        }
-    }
-
     public void handleAnswerGridChange() {
         Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
 
@@ -203,6 +198,11 @@ public class StudyAidController {
 
             if (!question.getQuestion().equals(questionQuestion)) {
                 question.setQuestion(questionQuestion);
+
+                handlerIsEnabled = false;
+                quizQuestionsListView.getSelectionModel().clearSelection();
+                quizQuestionsListView.getSelectionModel().select(question);
+                handlerIsEnabled = true;
             }
 
             updateAnswer(answerOneTextField, answerOneCheckBox, question.getAnswers().get(0));
