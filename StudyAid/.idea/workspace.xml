@@ -124,36 +124,13 @@
       <workItem from="1676052258451" duration="4316000" />
       <workItem from="1676144786810" duration="3912000" />
       <workItem from="1676148999107" duration="630000" />
-      <workItem from="1676149635763" duration="2927000" />
+      <workItem from="1676149635763" duration="3909000" />
+      <workItem from="1676153760418" duration="2080000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/studyaid/studyaid/StudyAidController.java</url>
-          <line>76</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/studyaid/studyaid/StudyAidController.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/studyaid/studyaid/StudyAidController.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

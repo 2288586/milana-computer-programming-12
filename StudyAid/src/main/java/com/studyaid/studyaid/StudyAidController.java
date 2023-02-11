@@ -3,6 +3,7 @@ package com.studyaid.studyaid;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -10,6 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -74,6 +76,12 @@ public class StudyAidController {
 
     @FXML
     private void initialize() {
+        questionNameTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
+        answerOneTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
+        answerTwoTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
+        answerThreeTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
+        answerFourTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
+
         quizQuestionsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleQuizQuestionsListView());
         allQuizzesChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleAllQuizzesChoiceBox());
 
@@ -176,6 +184,44 @@ public class StudyAidController {
             } else {
                 clearQuestionGrid();
             }
+        }
+    }
+
+    public void handleQuestionNameTextField() {
+        Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
+
+        if (question != null) {
+            quizQuestionsListView.refresh();
+        }
+    }
+
+    public void handleAnswerGridChange() {
+        Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
+
+        if (question != null) {
+            String questionQuestion = questionNameTextField.getText();
+
+            if (!question.getQuestion().equals(questionQuestion)) {
+                question.setQuestion(questionQuestion);
+            }
+
+            updateAnswer(answerOneTextField, answerOneCheckBox, question.getAnswers().get(0));
+            updateAnswer(answerTwoTextField, answerTwoCheckBox, question.getAnswers().get(1));
+            updateAnswer(answerThreeTextField, answerThreeCheckBox, question.getAnswers().get(2));
+            updateAnswer(answerFourTextField, answerFourCheckBox, question.getAnswers().get(3));
+        }
+    }
+
+    public void updateAnswer(TextField textField, CheckBox checkBox, Answer answer) {
+        String answerAnswer = textField.getText();
+        boolean answerIsCorrect = checkBox.isSelected();
+
+        if (!answer.getAnswer().equals(answerAnswer)) {
+            answer.setAnswer(answerAnswer);
+        }
+
+        if (answer.isCorrect() != answerIsCorrect) {
+            answer.setCorrect(answerIsCorrect);
         }
     }
 
