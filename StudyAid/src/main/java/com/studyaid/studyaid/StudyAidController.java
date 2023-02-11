@@ -89,7 +89,7 @@ public class StudyAidController {
         if (quizzes.size() > 0) {
             allQuizzesChoiceBox.getSelectionModel().select(0);
         } else {
-            clearQuestionGrid();
+            disableQuestionGrid();
         }
 
         playAnswerOneCheckBox.setVisible(false);
@@ -123,41 +123,47 @@ public class StudyAidController {
             if (quiz != null) {
                 ObservableList<Question> questions = FXCollections.observableArrayList(quiz.getQuestions());
                 quizQuestionsListView.setItems(questions);
-                disableQuestionGrid(false);
 
                 if (questions.size() > 0) {
                     quizQuestionsListView.getSelectionModel().select(0);
+                    enableQuestionGrid();
                 } else {
-                    clearQuestionGrid();
+                    disableQuestionGrid();
+                    newQuestionButton.setDisable(false);
                 }
             } else {
-                disableQuestionGrid(true);
+                disableQuestionGrid();
             }
         }
     }
 
     private void handleQuizQuestionsListView() {
         if (handlerIsEnabled) {
-            Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
+            Quiz quiz = allQuizzesChoiceBox.getValue();
 
-            if (question != null) {
-                List<Answer> answers = question.getAnswers();
+            if (quiz != null) {
+                Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
 
-                questionNameTextField.setText(question.getQuestion());
+                if (question != null) {
+                    List<Answer> answers = question.getAnswers();
 
-                answerOneTextField.setText(answers.get(0).getAnswer());
-                answerOneCheckBox.setSelected(answers.get(0).isCorrect());
+                    questionNameTextField.setText(question.getQuestion());
 
-                answerTwoTextField.setText(answers.get(1).getAnswer());
-                answerTwoCheckBox.setSelected(answers.get(1).isCorrect());
+                    answerOneTextField.setText(answers.get(0).getAnswer());
+                    answerOneCheckBox.setSelected(answers.get(0).isCorrect());
 
-                answerThreeTextField.setText(answers.get(2).getAnswer());
-                answerThreeCheckBox.setSelected(answers.get(2).isCorrect());
+                    answerTwoTextField.setText(answers.get(1).getAnswer());
+                    answerTwoCheckBox.setSelected(answers.get(1).isCorrect());
 
-                answerFourTextField.setText(answers.get(3).getAnswer());
-                answerFourCheckBox.setSelected(answers.get(3).isCorrect());
-            } else {
-                clearQuestionGrid();
+                    answerThreeTextField.setText(answers.get(2).getAnswer());
+                    answerThreeCheckBox.setSelected(answers.get(2).isCorrect());
+
+                    answerFourTextField.setText(answers.get(3).getAnswer());
+                    answerFourCheckBox.setSelected(answers.get(3).isCorrect());
+                } else {
+                    disableQuestionGrid();
+                    newQuestionButton.setDisable(false);
+                }
             }
         }
     }
@@ -185,12 +191,12 @@ public class StudyAidController {
             if (quizzes.size() > 0) {
                 allQuizzesChoiceBox.getSelectionModel().select(0);
             } else {
-                clearQuestionGrid();
+                disableQuestionGrid();
             }
         }
     }
 
-    public void handleAnswerGridChange() {
+    public void handleQuestionGridChange() {
         Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
 
         if (question != null) {
@@ -258,7 +264,8 @@ public class StudyAidController {
                 if (quiz.getQuestions().size() > 0) {
                     quizQuestionsListView.getSelectionModel().select(0);
                 } else {
-                    clearQuestionGrid();
+                    disableQuestionGrid();
+                    newQuestionButton.setDisable(false);
                 }
             }
         }
@@ -341,7 +348,16 @@ public class StudyAidController {
         answerFourCheckBox.setSelected(false);
     }
 
-    private void disableQuestionGrid(boolean disable) {
+    private void enableQuestionGrid() {
+        setQuestionGrid(false);
+    }
+
+    private void disableQuestionGrid() {
+        clearQuestionGrid();
+        setQuestionGrid(true);
+    }
+
+    private void setQuestionGrid(boolean disable) {
         questionNameTextField.setDisable(disable);
         answerOneTextField.setDisable(disable);
         answerOneCheckBox.setDisable(disable);
