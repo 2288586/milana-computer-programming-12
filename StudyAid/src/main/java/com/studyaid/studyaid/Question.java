@@ -44,16 +44,4 @@ public class Question {
     public String toString() {
         return question;
     }
-
-    @Override
-    public boolean equals(Object object) {
-        Question question = (Question) object;
-        boolean isEqual = false;
-
-        if (question != null && this.question.equals(question.getQuestion()) && this.answers.equals(question.getAnswers())) {
-            isEqual = true;
-        }
-
-        return isEqual;
-    }
 }

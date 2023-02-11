@@ -6,11 +6,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class DataPersister {
 
-    public static void save(String fileName, Collection<Quiz> quizzes) throws DataPersisterException {
+    public static void save(String fileName, List<Quiz> quizzes) throws DataPersisterException {
         try {
             File file = new File(fileName);
             FileWriter fileWriter = new FileWriter(file);
@@ -40,7 +40,7 @@ public class DataPersister {
         }
     }
 
-    public static Collection<Quiz> load(String fileName) throws DataPersisterException {
+    public static List<Quiz> load(String fileName) throws DataPersisterException {
         ArrayList<Quiz> quizzes;
 
         String line;

@@ -53,10 +53,6 @@
                                        <font>
                                           <Font size="12.0" />
                                        </font></Button>
-                                    <Button fx:id="saveQuizButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onSaveQuizButtonClick" prefHeight="30.0" prefWidth="100.0" text="Save Quiz" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="162.5" AnchorPane.rightAnchor="162.5" AnchorPane.topAnchor="21.0">
-                                       <font>
-                                          <Font size="12.0" />
-                                       </font></Button>
                                     <Button fx:id="deleteQuizButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onDeleteQuizButtonClick" prefHeight="30.0" prefWidth="100.0" text="Delete Quiz" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="272.5" AnchorPane.rightAnchor="52.5" AnchorPane.topAnchor="21.0">
                                        <font>
                                           <Font size="12.0" />

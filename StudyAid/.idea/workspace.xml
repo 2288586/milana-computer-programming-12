@@ -48,7 +48,7 @@
       <recent name="com.studyaid.studyaid" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.studyaid.studyaid.StudyAidApplication">
+  <component name="RunManager" selected="JUnit.All in StudyAid">
     <configuration name="com.studyaid.studyaid.StudyAidApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.studyaid.studyaid.StudyAidApplication" />
       <module name="StudyAid" />
@@ -88,8 +88,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.studyaid.studyaid.StudyAidApplication" />
         <item itemvalue="JUnit.All in StudyAid" />
+        <item itemvalue="Application.com.studyaid.studyaid.StudyAidApplication" />
         <item itemvalue="JUnit.DataPersisterTest.saveAndLoadQuizzes" />
       </list>
     </recent_temporary>
@@ -121,7 +121,8 @@
       <workItem from="1675921042344" duration="49000" />
       <workItem from="1675966150809" duration="30000" />
       <workItem from="1675966185997" duration="4280000" />
-      <workItem from="1676052258451" duration="4185000" />
+      <workItem from="1676052258451" duration="4316000" />
+      <workItem from="1676144786810" duration="3388000" />
     </task>
     <servers />
   </component>

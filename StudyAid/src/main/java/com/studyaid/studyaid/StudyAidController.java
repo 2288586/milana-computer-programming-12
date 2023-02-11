@@ -2,6 +2,7 @@ package com.studyaid.studyaid;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -9,15 +10,15 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class StudyAidController {
 
-    private final String fileName = "study_aid_quizzes.txt";
-    private Collection<Quiz> quizzes = new ArrayList<>();
+    private static final String fileName = "study_aid_quizzes.txt";
+    private static List<Quiz> quizzes = new ArrayList<>();
     private boolean inCreateQuizMode = false;
     private boolean inCreateQuestionMode = false;
     private boolean inPlayQuizMode = false;
@@ -35,7 +36,6 @@ public class StudyAidController {
     public TextField newQuizTextField;
     public ListView<Question> quizQuestionsListView;
     public Button newQuizButton;
-    public Button saveQuizButton;
     public Button deleteQuizButton;
 
     public TextField questionNameTextField;
@@ -76,26 +76,33 @@ public class StudyAidController {
     @FXML
     private void initialize() {
         //TODO: Handle Empty File (No Quizzes)
+
+        quizQuestionsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleQuizQuestionsListView());
+        allQuizzesChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleAllQuizzesChoiceBox());
+
+        populateData(quizzes);
+
+        playAnswerOneCheckBox.setVisible(false);
+        playAnswerTwoCheckBox.setVisible(false);
+        playAnswerThreeCheckBox.setVisible(false);
+        playAnswerFourCheckBox.setVisible(false);
+
+        submitAnswersButton.setVisible(false);
+    }
+
+    public static void loadData() {
         try {
             quizzes = DataPersister.load(fileName);
-            statusLabel.setText("Successfully loaded data.");
-
-            quizQuestionsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleQuizQuestionsListView());
-            allQuizzesChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleAllQuizzesChoiceBox());
-
-            saveQuizButton.setDisable(true);
-            populateData(quizzes);
-
-            playAnswerOneCheckBox.setVisible(false);
-            playAnswerTwoCheckBox.setVisible(false);
-            playAnswerThreeCheckBox.setVisible(false);
-            playAnswerFourCheckBox.setVisible(false);
-
-            submitAnswersButton.setVisible(false);
-
         } catch (Exception exception) {
             System.out.println(exception.toString());
-            statusLabel.setText("Failed to load data.");
+        }
+    }
+
+    public static void saveData() {
+        try {
+            DataPersister.save(fileName, quizzes);
+        } catch (Exception exception) {
+            System.out.println(exception.toString());
         }
     }
 
@@ -142,7 +149,7 @@ public class StudyAidController {
         }
     }
 
-    private void populateData(Collection<Quiz> quizzes) {
+    private void populateData(List<Quiz> quizzes) {
         ObservableList<Quiz> allQuizzesChoices = FXCollections.observableArrayList(quizzes);
 
         allQuizzesChoiceBox.setItems(allQuizzesChoices);
@@ -165,88 +172,19 @@ public class StudyAidController {
     }
 
     public void onNewQuizButtonClick() {
-        inCreateQuizMode = true;
+        Quiz newQuiz = new Quiz("Untitled");
+        quizzes.add(newQuiz);
+        populateData(quizzes);
 
-        allQuizzesChoiceBox.setVisible(false);
-        newQuizTextField.setVisible(true);
-
-        ObservableList<Question> allQuestions = FXCollections.observableArrayList(new ArrayList<>());
-        quizQuestionsListView.setItems(allQuestions);
-
-        clearQuestionGrid();
-        disableQuestionGrid(true);
-
-        newQuizButton.setDisable(true);
-        saveQuizButton.setDisable(false);
-    }
-
-    public void onSaveQuizButtonClick() {
-        String quizName = newQuizTextField.getText();
-
-        if (quizName == null || quizName.equals("")) {
-            statusLabel.setText("Cannot save, quiz name is required.");
-        } else {
-            Quiz quiz = new Quiz(quizName);
-
-            for (Question question : quizQuestionsListView.getItems()) {
-                quiz.addQuestion(question);
-            }
-            quizzes.add(quiz);
-
-            try {
-                DataPersister.save(fileName, quizzes);
-                statusLabel.setText("Successfully saved quiz.");
-
-                inCreateQuizMode = false;
-                allQuizzesChoiceBox.setVisible(true);
-                newQuizTextField.setText("");
-                newQuizTextField.setVisible(false);
-
-                newQuizButton.setDisable(false);
-                saveQuizButton.setDisable(true);
-
-                disableQuestionGrid(false);
-
-                populateData(quizzes);
-                allQuizzesChoiceBox.setValue(quiz);
-
-            } catch (Exception exception) {
-                statusLabel.setText("Failed to save quiz.");
-            }
-        }
+        allQuizzesChoiceBox.getSelectionModel().select(newQuiz);
     }
 
     public void onDeleteQuizButtonClick() {
-        if (inCreateQuizMode) {
+        Quiz quiz = allQuizzesChoiceBox.getValue();
 
-            inCreateQuizMode = false;
-            allQuizzesChoiceBox.setVisible(true);
-            newQuizTextField.setText("");
-            newQuizTextField.setVisible(false);
-
-            newQuizButton.setDisable(false);
-            saveQuizButton.setDisable(true);
-
-            statusLabel.setText("Successfully deleted quiz.");
-
-            disableQuestionGrid(false);
+        if (quiz != null) {
+            quizzes.remove(quiz);
             populateData(quizzes);
-
-        } else {
-            Quiz quiz = allQuizzesChoiceBox.getValue();
-
-            if (quiz != null) {
-                quizzes.remove(quiz);
-
-                try {
-                    DataPersister.save(fileName, quizzes);
-                    statusLabel.setText("Successfully deleted quiz.");
-                    populateData(quizzes);
-
-                } catch (Exception exception) {
-                    statusLabel.setText("Failed to delete quiz.");
-                }
-            }
         }
     }
 
@@ -376,10 +314,8 @@ public class StudyAidController {
         } else {
             inPlayQuizMode = false;
             populateData(quizzes);
-            //TODO: Select Recently Played Quiz (Unless Deleted)
 
-            //TODO: Add Quiz Name
-            playQuizStatusLabel.setText("End Of Quiz. Final " + playQuiz.getCurrentScore());
+            playQuizStatusLabel.setText("Quiz Completed. Final " + playQuiz.getCurrentScore());
             nextQuestionButton.setVisible(false);
 
             playQuizzesChoiceBox.setDisable(false);

@@ -1,10 +1,11 @@
 package com.studyaid.studyaid;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 class DataPersisterTest {
 
@@ -31,13 +32,51 @@ class DataPersisterTest {
         quizTwo.addQuestion(questionOne);
         quizTwo.addQuestion(questionThree);
 
-        Collection<Quiz> expectedQuizzes = new ArrayList<>();
+        List<Quiz> expectedQuizzes = new ArrayList<>();
         expectedQuizzes.add(quizOne);
         expectedQuizzes.add(quizTwo);
 
         DataPersister.save("study_aid_quizzes_test.txt", expectedQuizzes);
-        Collection<Quiz> actualQuizzes = DataPersister.load("study_aid_quizzes_test.txt");
+        List<Quiz> actualQuizzes = DataPersister.load("study_aid_quizzes_test.txt");
 
-        assertEquals(expectedQuizzes, actualQuizzes);
+        Quiz expectedQuiz;
+        Quiz actualQuiz;
+
+        List<Question> expectedQuestions;
+        List<Question> actualQuestions;
+
+        List<Answer> expectedAnswers;
+        List<Answer> actualAnswers;
+
+        Answer expectedAnswer;
+        Answer actualAnswer;
+
+        assertEquals(expectedQuizzes.size(), actualQuizzes.size());
+
+        for (int i = 0; i < actualQuizzes.size(); i++) {
+            expectedQuiz = expectedQuizzes.get(i);
+            actualQuiz = actualQuizzes.get(i);
+
+            expectedQuestions = expectedQuiz.getQuestions();
+            actualQuestions = actualQuiz.getQuestions();
+
+            assertEquals(expectedQuiz.toString(), actualQuiz.toString());
+            assertEquals(expectedQuestions.size(), actualQuestions.size());
+
+            for (int j = 0; j < actualQuestions.size(); j++) {
+                expectedAnswers = expectedQuestions.get(j).getAnswers();
+                actualAnswers = actualQuestions.get(j).getAnswers();
+
+                assertEquals(expectedAnswers.size(), actualAnswers.size());
+
+                for (int k = 0; k < actualAnswers.size(); k++) {
+                    expectedAnswer = expectedAnswers.get(k);
+                    actualAnswer = actualAnswers.get(k);
+
+                    assertEquals(expectedAnswer.getAnswer(), actualAnswer.getAnswer());
+                    assertEquals(expectedAnswer.isCorrect(), actualAnswer.isCorrect());
+                }
+            }
+        }
     }
 }

@@ -29,16 +29,4 @@ public class Answer {
     public String toString() {
         return answer;
     }
-
-    @Override
-    public boolean equals(Object object) {
-        Answer answer = (Answer) object;
-        boolean isEqual = false;
-
-        if (answer != null && this.answer.equals(answer.getAnswer()) && this.correct == answer.isCorrect()) {
-            isEqual = true;
-        }
-
-        return isEqual;
-    }
 }

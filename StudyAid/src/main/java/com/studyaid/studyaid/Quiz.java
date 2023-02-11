@@ -36,16 +36,4 @@ public class Quiz {
     public String toString() {
         return name;
     }
-
-    @Override
-    public boolean equals(Object object) {
-        Quiz quiz = (Quiz) object;
-        boolean isEqual = false;
-
-        if (quiz != null && this.name.equals(quiz.getName()) && this.questions.equals(quiz.getQuestions())) {
-            isEqual = true;
-        }
-
-        return isEqual;
-    }
 }
