@@ -10,6 +10,10 @@ public class Answer {
     }
 
     public String getAnswer() {
+        if (answer == null || answer.isBlank()) {
+            return "Undefined Answer";
+        }
+
         return answer;
     }
 
@@ -27,6 +31,6 @@ public class Answer {
 
     @Override
     public String toString() {
-        return answer;
+        return getAnswer();
     }
 }

@@ -13,6 +13,10 @@ public class Question {
     }
 
     public String getQuestion() {
+        if (question == null || question.isBlank()) {
+            return "Undefined Question";
+        }
+
         return question;
     }
 
@@ -42,6 +46,6 @@ public class Question {
 
     @Override
     public String toString() {
-        return question;
+        return getQuestion();
     }
 }

@@ -50,7 +50,6 @@ public class StudyAidController {
     public CheckBox answerFourCheckBox;
 
     public Button newQuestionButton;
-    public Button saveQuestionButton;
     public Button deleteQuestionButton;
 
     public ChoiceBox<Quiz> playQuizzesChoiceBox;
@@ -75,12 +74,16 @@ public class StudyAidController {
 
     @FXML
     private void initialize() {
-        //TODO: Handle Empty File (No Quizzes)
-
         quizQuestionsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleQuizQuestionsListView());
         allQuizzesChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleAllQuizzesChoiceBox());
 
-        populateData(quizzes);
+        populateData();
+
+        if (quizzes.size() > 0) {
+            allQuizzesChoiceBox.getSelectionModel().select(0);
+        } else {
+            clearQuestionGrid();
+        }
 
         playAnswerOneCheckBox.setVisible(false);
         playAnswerTwoCheckBox.setVisible(false);
@@ -106,12 +109,31 @@ public class StudyAidController {
         }
     }
 
-    private void handleQuizQuestionsListView() {
-        Question currentQuestion = quizQuestionsListView.getSelectionModel().getSelectedItem();
-        if (currentQuestion != null) {
-            List<Answer> answers = currentQuestion.getAnswers();
+    private void handleAllQuizzesChoiceBox() {
+        Quiz quiz = allQuizzesChoiceBox.getValue();
 
-            questionNameTextField.setText(currentQuestion.getQuestion());
+        if (quiz != null) {
+            ObservableList<Question> questions = FXCollections.observableArrayList(quiz.getQuestions());
+            quizQuestionsListView.setItems(questions);
+            disableQuestionGrid(false);
+
+            if (questions.size() > 0) {
+                quizQuestionsListView.getSelectionModel().select(0);
+            } else {
+                clearQuestionGrid();
+            }
+        } else {
+            disableQuestionGrid(true);
+        }
+    }
+
+    private void handleQuizQuestionsListView() {
+        Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
+
+        if (question != null) {
+            List<Answer> answers = question.getAnswers();
+
+            questionNameTextField.setText(question.getQuestion());
 
             answerOneTextField.setText(answers.get(0).getAnswer());
             answerOneCheckBox.setSelected(answers.get(0).isCorrect());
@@ -124,59 +146,22 @@ public class StudyAidController {
 
             answerFourTextField.setText(answers.get(3).getAnswer());
             answerFourCheckBox.setSelected(answers.get(3).isCorrect());
-
-            saveQuestionButton.setDisable(true);
-        } else {
-            saveQuestionButton.setDisable(false);
-        }
-    }
-
-    private void handleAllQuizzesChoiceBox() {
-        Quiz currentQuiz = allQuizzesChoiceBox.getValue();
-        if (currentQuiz != null) {
-            ObservableList<Question> allQuestions = FXCollections.observableArrayList(currentQuiz.getQuestions());
-
-            quizQuestionsListView.setItems(allQuestions);
-            if (allQuestions.size() > 0) {
-                quizQuestionsListView.getSelectionModel().select(0);
-                disableQuestionGrid(false);
-                saveQuestionButton.setDisable(true);
-            } else {
-                clearQuestionGrid();
-            }
-        } else {
-            disableQuestionGrid(true);
-        }
-    }
-
-    private void populateData(List<Quiz> quizzes) {
-        ObservableList<Quiz> allQuizzesChoices = FXCollections.observableArrayList(quizzes);
-
-        allQuizzesChoiceBox.setItems(allQuizzesChoices);
-        if (quizzes.size() > 0) {
-            allQuizzesChoiceBox.setValue(allQuizzesChoices.get(0));
         } else {
             clearQuestionGrid();
         }
+    }
 
-        if (!inPlayQuizMode) {
-            playQuizzesChoiceBox.setItems(allQuizzesChoices);
-
-            if (quizzes.size() > 0) {
-                playQuizzesChoiceBox.setValue(allQuizzesChoices.get(0));
-                playQuizButton.setDisable(false);
-            } else {
-                playQuizButton.setDisable(true);
-            }
-        }
+    private void populateData() {
+        ObservableList<Quiz> allQuizzesChoices = FXCollections.observableArrayList(quizzes);
+        allQuizzesChoiceBox.setItems(allQuizzesChoices);
     }
 
     public void onNewQuizButtonClick() {
-        Quiz newQuiz = new Quiz("Untitled");
-        quizzes.add(newQuiz);
-        populateData(quizzes);
+        Quiz quiz = new Quiz("Untitled");
+        quizzes.add(quiz);
+        populateData();
 
-        allQuizzesChoiceBox.getSelectionModel().select(newQuiz);
+        allQuizzesChoiceBox.getSelectionModel().select(quiz);
     }
 
     public void onDeleteQuizButtonClick() {
@@ -184,76 +169,51 @@ public class StudyAidController {
 
         if (quiz != null) {
             quizzes.remove(quiz);
-            populateData(quizzes);
+            populateData();
+
+            if (quizzes.size() > 0) {
+                allQuizzesChoiceBox.getSelectionModel().select(0);
+            } else {
+                clearQuestionGrid();
+            }
         }
     }
 
     public void onNewQuestionButtonClick() {
-        inCreateQuestionMode = true;
-        quizQuestionsListView.getSelectionModel().select(null);
-        clearQuestionGrid();
-    }
-
-    public void onSaveQuestionButtonClick() {
         Quiz quiz = allQuizzesChoiceBox.getValue();
-        String questionName = questionNameTextField.getText();
 
-        Answer answerOne = new Answer(answerOneTextField.getText(), answerOneCheckBox.isSelected());
-        Answer answerTwo = new Answer(answerTwoTextField.getText(), answerTwoCheckBox.isSelected());
-        Answer answerThree = new Answer(answerThreeTextField.getText(), answerThreeCheckBox.isSelected());
-        Answer answerFour = new Answer(answerFourTextField.getText(), answerFourCheckBox.isSelected());
+        if (quiz != null) {
+            Question question = new Question("");
 
-        if (questionName == null || questionName.equals("")) {
-            statusLabel.setText("Cannot save, quiz name is required.");
-        } else if (answerOne.getAnswer() == null || answerOne.getAnswer().equals("") || answerTwo.getAnswer() == null || answerTwo.getAnswer().equals("") || answerThree.getAnswer() == null || answerThree.getAnswer().equals("") || answerFour.getAnswer() == null || answerFour.getAnswer().equals("")) {
-            statusLabel.setText("Cannot save, four answers are required.");
-        } else {
-            Question question = new Question(questionName);
-
-            question.addAnswer(answerOne);
-            question.addAnswer(answerTwo);
-            question.addAnswer(answerThree);
-            question.addAnswer(answerFour);
+            for (int i = 0; i < 4; i++) {
+                question.addAnswer(new Answer("", false));
+            }
 
             quiz.addQuestion(question);
+            populateData();
 
-            try {
-                DataPersister.save(fileName, quizzes);
-                statusLabel.setText("Successfully saved question.");
-                populateData(quizzes);
-
-                inCreateQuestionMode = false;
-
-                allQuizzesChoiceBox.getSelectionModel().select(quiz);
-                quizQuestionsListView.getSelectionModel().select(question);
-
-            } catch (Exception exception) {
-                statusLabel.setText("Failed to save question.");
-            }
+            allQuizzesChoiceBox.getSelectionModel().select(quiz);
+            quizQuestionsListView.getSelectionModel().select(question);
         }
     }
 
     public void onDeleteQuestionButtonClick() {
         Quiz quiz = allQuizzesChoiceBox.getValue();
-        Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
 
-        if ((question == null || question.getQuestion().equals("")) && !inCreateQuestionMode) {
-            statusLabel.setText("Cannot delete, please select question.");
-        } else {
+        if (quiz != null) {
+            Question question = quizQuestionsListView.getSelectionModel().getSelectedItem();
 
-            quiz.removeQuestion(question);
+            if (question != null) {
+                quiz.removeQuestion(question);
+                populateData();
 
-            try {
-                DataPersister.save(fileName, quizzes);
-                statusLabel.setText("Successfully deleted question.");
-                populateData(quizzes);
-
-                inCreateQuestionMode = false;
                 allQuizzesChoiceBox.getSelectionModel().select(quiz);
 
-            } catch (Exception exception) {
-                quiz.addQuestion(question);
-                statusLabel.setText("Failed to delete question.");
+                if (quiz.getQuestions().size() > 0) {
+                    quizQuestionsListView.getSelectionModel().select(0);
+                } else {
+                    clearQuestionGrid();
+                }
             }
         }
     }
@@ -313,7 +273,7 @@ public class StudyAidController {
             displayQuestion();
         } else {
             inPlayQuizMode = false;
-            populateData(quizzes);
+            populateData();
 
             playQuizStatusLabel.setText("Quiz Completed. Final " + playQuiz.getCurrentScore());
             nextQuestionButton.setVisible(false);
@@ -344,10 +304,9 @@ public class StudyAidController {
         answerThreeTextField.setDisable(disable);
         answerThreeCheckBox.setDisable(disable);
         answerFourTextField.setDisable(disable);
-        answerFourTextField.setDisable(disable);
+        answerFourCheckBox.setDisable(disable);
 
         newQuestionButton.setDisable(disable);
-        saveQuestionButton.setDisable(disable);
         deleteQuestionButton.setDisable(disable);
     }
 
