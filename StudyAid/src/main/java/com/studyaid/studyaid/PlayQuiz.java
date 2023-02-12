@@ -18,6 +18,10 @@ public class PlayQuiz {
         numOfCorrectAnswers = 0;
     }
 
+    public Quiz getQuiz() {
+        return quiz;
+    }
+
     public Question getNextQuestion() {
         List<Question> questions = quiz.getQuestions();
         Question currentQuestion = null;

@@ -19,7 +19,6 @@ public class StudyAidController {
 
     private static final String fileName = "study_aid_quizzes.txt";
     private static List<Quiz> quizzes = new ArrayList<>();
-    private boolean inPlayQuizMode = false;
 
     private boolean handlerIsEnabled = true;
     private PlayQuiz playQuiz;
@@ -52,6 +51,8 @@ public class StudyAidController {
     public Button deleteQuestionButton;
 
     public ChoiceBox<Quiz> playQuizzesChoiceBox;
+
+    public Label playQuizNameLabel;
     public Button playQuizButton;
 
     public Label playQuestionNameLabel;
@@ -83,12 +84,13 @@ public class StudyAidController {
         quizQuestionsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleQuizQuestionsListView());
         allQuizzesChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleAllQuizzesChoiceBox());
 
-        populateData();
+        populateQuizzes();
 
         if (quizzes.size() > 0) {
             allQuizzesChoiceBox.getSelectionModel().select(0);
         } else {
             disableQuestionGrid();
+            playQuizButton.setDisable(true);
         }
 
         playAnswerOneCheckBox.setVisible(false);
@@ -148,11 +150,12 @@ public class StudyAidController {
 
                 handlerIsEnabled = false;
                 Quiz temporaryQuiz = new Quiz("New Quiz");
-                quizzes.add(temporaryQuiz);
-                populateData();
 
+                quizzes.add(temporaryQuiz);
+                populateQuizzes();
                 quizzes.remove(temporaryQuiz);
-                populateData();
+                populateQuizzes();
+
                 allQuizzesChoiceBox.getSelectionModel().select(quiz);
                 handlerIsEnabled = true;
             }
@@ -190,17 +193,25 @@ public class StudyAidController {
         }
     }
 
-    private void populateData() {
+    private void populateQuizzes() {
         ObservableList<Quiz> allQuizzesChoices = FXCollections.observableArrayList(quizzes);
         allQuizzesChoiceBox.setItems(allQuizzesChoices);
+
+        ObservableList<Quiz> playQuizzesChoices = FXCollections.observableArrayList(quizzes);
+        playQuizzesChoiceBox.setItems(playQuizzesChoices);
+
+        if (quizzes.size() > 0) {
+            playQuizzesChoiceBox.getSelectionModel().select(0);
+        }
     }
 
     public void onNewQuizButtonClick() {
         Quiz quiz = new Quiz("Untitled");
         quizzes.add(quiz);
-        populateData();
+        populateQuizzes();
 
         allQuizzesChoiceBox.getSelectionModel().select(quiz);
+        playQuizButton.setDisable(false);
     }
 
     public void onDeleteQuizButtonClick() {
@@ -208,12 +219,13 @@ public class StudyAidController {
 
         if (quiz != null) {
             quizzes.remove(quiz);
-            populateData();
+            populateQuizzes();
 
             if (quizzes.size() > 0) {
                 allQuizzesChoiceBox.getSelectionModel().select(0);
             } else {
                 disableQuestionGrid();
+                playQuizButton.setDisable(true);
             }
         }
     }
@@ -264,7 +276,7 @@ public class StudyAidController {
             }
 
             quiz.addQuestion(question);
-            populateData();
+            populateQuizzes();
 
             allQuizzesChoiceBox.getSelectionModel().select(quiz);
             quizQuestionsListView.getSelectionModel().select(question);
@@ -279,7 +291,7 @@ public class StudyAidController {
 
             if (question != null) {
                 quiz.removeQuestion(question);
-                populateData();
+                populateQuizzes();
 
                 allQuizzesChoiceBox.getSelectionModel().select(quiz);
 
@@ -294,27 +306,40 @@ public class StudyAidController {
     }
 
     public void onPlayButtonQuizClick() {
-        inPlayQuizMode = true;
-        playQuizzesChoiceBox.setDisable(true);
-        playQuizButton.setDisable(true);
-
-        togglePlayVisibility(true, false);
-        scoreLabel.setText("Score: ");
+        playQuizzesChoiceBox.setVisible(false);
+        playQuizButton.setVisible(false);
+        playQuizNameLabel.setVisible(true);
 
         Quiz quiz = playQuizzesChoiceBox.getSelectionModel().getSelectedItem();
+        playQuizNameLabel.setText("Currently Playing: '" + quiz.getName() + "'");
+
         playQuiz = new PlayQuiz(quiz);
+        scoreLabel.setText(playQuiz.getCurrentScore());
+
+        onNextQuestionButtonClick();
+    }
+
+    public void onNextQuestionButtonClick() {
         question = playQuiz.getNextQuestion();
 
         if (question != null) {
+            enableAnswerQuestion();
+            clearPlayCheckboxes();
             displayQuestion();
         } else {
-            //TODO: Handle No Questions
+            scoreLabel.setText(playQuiz.getCurrentScore());
+            enableAnswerResult();
+
+            playQuizStatusLabel.setText("Quiz '" + playQuiz.getQuiz().getName() + "' Completed. Final " + playQuiz.getCurrentScore());
+            nextQuestionButton.setVisible(false);
+
+            playQuizNameLabel.setVisible(false);
+            playQuizzesChoiceBox.setVisible(true);
+            playQuizButton.setVisible(true);
         }
     }
 
     public void onSubmitAnswersButtonClick() {
-        togglePlayVisibility(false, true);
-
         ArrayList<Answer> answers = new ArrayList<>();
         if (playAnswerOneCheckBox.isSelected()) {
             answers.add(answerOne);
@@ -332,29 +357,11 @@ public class StudyAidController {
         boolean isCorrect = playQuiz.checkSubmittedAnswers(question, answers);
         scoreLabel.setText(playQuiz.getCurrentScore());
 
+        enableAnswerResult();
         if (isCorrect) {
             playQuizStatusLabel.setText("Correct!");
         } else {
             playQuizStatusLabel.setText("Incorrect...");
-        }
-    }
-
-    public void onNextQuestionButtonClick() {
-        question = playQuiz.getNextQuestion();
-        clearPlayCheckboxes();
-
-        if (question != null) {
-            togglePlayVisibility(true, false);
-            displayQuestion();
-        } else {
-            inPlayQuizMode = false;
-            populateData();
-
-            playQuizStatusLabel.setText("Quiz Completed. Final " + playQuiz.getCurrentScore());
-            nextQuestionButton.setVisible(false);
-
-            playQuizzesChoiceBox.setDisable(false);
-            playQuizButton.setDisable(false);
         }
     }
 
@@ -394,22 +401,30 @@ public class StudyAidController {
         deleteQuestionButton.setDisable(disable);
     }
 
-    private void togglePlayVisibility(boolean answeringQuestion, boolean viewingResult) {
-        playQuestionNameLabel.setVisible(answeringQuestion);
-        submitAnswersButton.setVisible(answeringQuestion);
+    private void enableAnswerQuestion() {
+        togglePlayVisibility(true, false);
+    }
 
-        playAnswerOneLabel.setVisible(answeringQuestion);
-        playAnswerTwoLabel.setVisible(answeringQuestion);
-        playAnswerThreeLabel.setVisible(answeringQuestion);
-        playAnswerFourLabel.setVisible(answeringQuestion);
+    private void enableAnswerResult() {
+        togglePlayVisibility(false, true);
+    }
 
-        playAnswerOneCheckBox.setVisible(answeringQuestion);
-        playAnswerTwoCheckBox.setVisible(answeringQuestion);
-        playAnswerThreeCheckBox.setVisible(answeringQuestion);
-        playAnswerFourCheckBox.setVisible(answeringQuestion);
+    private void togglePlayVisibility(boolean answerQuestionIsVisible, boolean answerResultIsVisible) {
+        playQuestionNameLabel.setVisible(answerQuestionIsVisible);
+        submitAnswersButton.setVisible(answerQuestionIsVisible);
 
-        playQuizStatusLabel.setVisible(viewingResult);
-        nextQuestionButton.setVisible(viewingResult);
+        playAnswerOneLabel.setVisible(answerQuestionIsVisible);
+        playAnswerTwoLabel.setVisible(answerQuestionIsVisible);
+        playAnswerThreeLabel.setVisible(answerQuestionIsVisible);
+        playAnswerFourLabel.setVisible(answerQuestionIsVisible);
+
+        playAnswerOneCheckBox.setVisible(answerQuestionIsVisible);
+        playAnswerTwoCheckBox.setVisible(answerQuestionIsVisible);
+        playAnswerThreeCheckBox.setVisible(answerQuestionIsVisible);
+        playAnswerFourCheckBox.setVisible(answerQuestionIsVisible);
+
+        playQuizStatusLabel.setVisible(answerResultIsVisible);
+        nextQuestionButton.setVisible(answerResultIsVisible);
     }
 
     private void displayQuestion() {
