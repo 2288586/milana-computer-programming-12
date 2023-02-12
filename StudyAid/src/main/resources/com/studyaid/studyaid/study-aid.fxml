@@ -27,27 +27,32 @@
                           <columnConstraints>
                             <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" percentWidth="5.0" />
                               <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" percentWidth="42.5" />
-                              <ColumnConstraints minWidth="10.0" percentWidth="5.0" prefWidth="100.0" />
+                              <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" percentWidth="5.0" />
                               <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" percentWidth="42.5" />
                             <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" percentWidth="5.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="5.0" vgrow="SOMETIMES" />
-                            <RowConstraints percentHeight="10.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="-Infinity" percentHeight="70.0" vgrow="SOMETIMES" />
-                            <RowConstraints percentHeight="10.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="-Infinity" percentHeight="5.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="-Infinity" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="-Infinity" percentHeight="65.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="-Infinity" percentHeight="10.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="5.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField fx:id="newQuizTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="425.0" promptText="Quiz Name (Required)" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                               <ChoiceBox fx:id="allQuizzesChoiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <children>
-                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="425.0" text="Quiz Questions:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                    <ListView fx:id="quizQuestionsListView" prefHeight="480.0" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                    <TextField fx:id="quizNameTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#handleQuizNameChange" prefHeight="25.0" prefWidth="425.0" promptText="Quiz Name (Required)" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="425.0" text="Quiz Questions:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ListView fx:id="quizQuestionsListView" prefHeight="442.0" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                  <children>
                                     <Button fx:id="newQuizButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNewQuizButtonClick" prefHeight="30.0" prefWidth="100.0" text="New Quiz" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="272.5" AnchorPane.topAnchor="21.0">
                                        <font>
@@ -60,9 +65,13 @@
                                     </Button>
                                  </children>
                               </AnchorPane>
-                              <Label fx:id="statusLabel" prefHeight="36.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                              <TextField fx:id="questionNameTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#handleQuestionGridChange" prefHeight="25.0" prefWidth="425.0" promptText="Question (Required)" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                              <GridPane GridPane.columnIndex="3" GridPane.rowIndex="2">
+                              <Label fx:id="statusLabel" prefHeight="36.0" prefWidth="425.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="425.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <children>
+                                    <TextField fx:id="questionNameTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#handleQuestionGridChange" prefHeight="25.0" prefWidth="425.0" promptText="Question (Required)" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <GridPane GridPane.columnIndex="3" GridPane.rowIndex="3">
                                 <columnConstraints>
                                   <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" percentWidth="90.0" />
                                   <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" percentWidth="10.0" />
@@ -84,7 +93,7 @@
                                     <CheckBox fx:id="answerFourCheckBox" layoutX="10.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleQuestionGridChange" prefHeight="17.5" prefWidth="17.5" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                                  </children>
                               </GridPane>
-                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="425.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="425.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                  <children>
                                     <Button fx:id="newQuestionButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNewQuestionButtonClick" prefHeight="30.0" prefWidth="100.0" text="New Question" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="272.5" AnchorPane.topAnchor="21.0">
                                        <font>

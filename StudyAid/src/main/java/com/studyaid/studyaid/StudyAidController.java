@@ -2,7 +2,6 @@ package com.studyaid.studyaid;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +32,7 @@ public class StudyAidController {
 
     public Label statusLabel;
     public ChoiceBox<Quiz> allQuizzesChoiceBox;
-    public TextField newQuizTextField;
+    public TextField quizNameTextField;
     public ListView<Question> quizQuestionsListView;
     public Button newQuizButton;
     public Button deleteQuizButton;
@@ -75,6 +73,7 @@ public class StudyAidController {
 
     @FXML
     private void initialize() {
+        quizNameTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
         questionNameTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
         answerOneTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
         answerTwoTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
@@ -121,6 +120,7 @@ public class StudyAidController {
             Quiz quiz = allQuizzesChoiceBox.getValue();
 
             if (quiz != null) {
+                quizNameTextField.setText(quiz.getName());
                 ObservableList<Question> questions = FXCollections.observableArrayList(quiz.getQuestions());
                 quizQuestionsListView.setItems(questions);
 
@@ -133,6 +133,28 @@ public class StudyAidController {
                 }
             } else {
                 disableQuestionGrid();
+            }
+        }
+    }
+
+    public void handleQuizNameChange() {
+        Quiz quiz = allQuizzesChoiceBox.getValue();
+
+        if (quiz != null) {
+            String quizName = quizNameTextField.getText();
+
+            if (!quiz.getName().equals(quizName)) {
+                quiz.setName(quizName);
+
+                handlerIsEnabled = false;
+                Quiz temporaryQuiz = new Quiz("New Quiz");
+                quizzes.add(temporaryQuiz);
+                populateData();
+
+                quizzes.remove(temporaryQuiz);
+                populateData();
+                allQuizzesChoiceBox.getSelectionModel().select(quiz);
+                handlerIsEnabled = true;
             }
         }
     }
