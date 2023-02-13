@@ -20,6 +20,8 @@ public class StudyAidController {
     private static final String fileName = "study_aid_quizzes.txt";
     private static List<Quiz> quizzes = new ArrayList<>();
 
+    private static String onLoadMessage;
+
     private boolean handlerIsEnabled = true;
     private QuizPlayer quizPlayer;
     private Question question;
@@ -74,6 +76,8 @@ public class StudyAidController {
 
     @FXML
     private void initialize() {
+        statusLabel.setText(onLoadMessage);
+
         quizNameTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
         questionNameTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
         answerOneTextField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
@@ -104,8 +108,10 @@ public class StudyAidController {
     public static void loadData() {
         try {
             quizzes = DataPersister.load(fileName);
+            onLoadMessage = "Successfully loaded data.";
         } catch (Exception exception) {
             System.out.println(exception.toString());
+            onLoadMessage = "Failed to loaded data.";
         }
     }
 
@@ -212,6 +218,8 @@ public class StudyAidController {
 
         allQuizzesChoiceBox.getSelectionModel().select(quiz);
         playQuizButton.setDisable(false);
+
+        statusLabel.setText("Created quiz '" + quiz.getName() + "'.");
     }
 
     public void onDeleteQuizButtonClick() {
@@ -220,6 +228,8 @@ public class StudyAidController {
         if (quiz != null) {
             quizzes.remove(quiz);
             populateQuizzes();
+
+            statusLabel.setText("Deleted quiz '" + quiz.getName() + "'.");
 
             if (quizzes.size() > 0) {
                 allQuizzesChoiceBox.getSelectionModel().select(0);
@@ -280,6 +290,8 @@ public class StudyAidController {
 
             allQuizzesChoiceBox.getSelectionModel().select(quiz);
             quizQuestionsListView.getSelectionModel().select(question);
+
+            statusLabel.setText("Created question '" + question.getQuestion() + "'.");
         }
     }
 
@@ -294,6 +306,7 @@ public class StudyAidController {
                 populateQuizzes();
 
                 allQuizzesChoiceBox.getSelectionModel().select(quiz);
+                statusLabel.setText("Deleted question '" + question.getQuestion() + "'.");
 
                 if (quiz.getQuestions().size() > 0) {
                     quizQuestionsListView.getSelectionModel().select(0);
