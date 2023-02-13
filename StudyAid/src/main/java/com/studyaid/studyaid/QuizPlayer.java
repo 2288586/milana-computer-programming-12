@@ -2,7 +2,7 @@ package com.studyaid.studyaid;
 
 import java.util.List;
 
-public class PlayQuiz {
+public class QuizPlayer {
 
     private final Quiz quiz;
     private int currentQuestionIndex;
@@ -10,7 +10,7 @@ public class PlayQuiz {
     int numOfQuestionsAnswered;
     int numOfCorrectAnswers;
 
-    public PlayQuiz(Quiz quiz) {
+    public QuizPlayer(Quiz quiz) {
         this.quiz = quiz;
         currentQuestionIndex = 0;
 

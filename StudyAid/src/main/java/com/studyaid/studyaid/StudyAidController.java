@@ -21,7 +21,7 @@ public class StudyAidController {
     private static List<Quiz> quizzes = new ArrayList<>();
 
     private boolean handlerIsEnabled = true;
-    private PlayQuiz playQuiz;
+    private QuizPlayer quizPlayer;
     private Question question;
 
     private Answer answerOne;
@@ -313,24 +313,24 @@ public class StudyAidController {
         Quiz quiz = playQuizzesChoiceBox.getSelectionModel().getSelectedItem();
         playQuizNameLabel.setText("Currently Playing: '" + quiz.getName() + "'");
 
-        playQuiz = new PlayQuiz(quiz);
-        scoreLabel.setText(playQuiz.getCurrentScore());
+        quizPlayer = new QuizPlayer(quiz);
+        scoreLabel.setText(quizPlayer.getCurrentScore());
 
         onNextQuestionButtonClick();
     }
 
     public void onNextQuestionButtonClick() {
-        question = playQuiz.getNextQuestion();
+        question = quizPlayer.getNextQuestion();
 
         if (question != null) {
             enableAnswerQuestion();
             clearPlayCheckboxes();
             displayQuestion();
         } else {
-            scoreLabel.setText(playQuiz.getCurrentScore());
+            scoreLabel.setText(quizPlayer.getCurrentScore());
             enableAnswerResult();
 
-            playQuizStatusLabel.setText("Quiz '" + playQuiz.getQuiz().getName() + "' Completed. Final " + playQuiz.getCurrentScore());
+            playQuizStatusLabel.setText("Quiz '" + quizPlayer.getQuiz().getName() + "' Completed. Final " + quizPlayer.getCurrentScore());
             nextQuestionButton.setVisible(false);
 
             playQuizNameLabel.setVisible(false);
@@ -354,8 +354,8 @@ public class StudyAidController {
             answers.add(answerFour);
         }
 
-        boolean isCorrect = playQuiz.checkSubmittedAnswers(question, answers);
-        scoreLabel.setText(playQuiz.getCurrentScore());
+        boolean isCorrect = quizPlayer.checkSubmittedAnswers(question, answers);
+        scoreLabel.setText(quizPlayer.getCurrentScore());
 
         enableAnswerResult();
         if (isCorrect) {

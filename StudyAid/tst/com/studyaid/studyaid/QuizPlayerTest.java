@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class PlayQuizTest {
+class QuizPlayerTest {
 
     @Test
     void playQuiz() {
@@ -34,9 +34,9 @@ class PlayQuizTest {
         quiz.addQuestion(questionTwo);
         quiz.addQuestion(questionThree);
         quiz.addQuestion(questionFour);
-        PlayQuiz playQuiz = new PlayQuiz(quiz);
+        QuizPlayer quizPlayer = new QuizPlayer(quiz);
 
-        Question question = playQuiz.getNextQuestion();
+        Question question = quizPlayer.getNextQuestion();
         Answer answerOne = questionOne.getAnswers().get(0);
         Answer answerTwo = questionOne.getAnswers().get(1);
 
@@ -44,11 +44,11 @@ class PlayQuizTest {
         answers.add(answerOne);
         answers.add(answerTwo);
 
-        playQuiz.checkSubmittedAnswers(question, answers);
-        String currentScore = playQuiz.getCurrentScore();
+        quizPlayer.checkSubmittedAnswers(question, answers);
+        String currentScore = quizPlayer.getCurrentScore();
         assertEquals("Score: " + 1 + "/" + 1, currentScore);
 
-        question = playQuiz.getNextQuestion();
+        question = quizPlayer.getNextQuestion();
         answerOne = questionTwo.getAnswers().get(0);
         answerTwo = questionTwo.getAnswers().get(1);
 
@@ -56,11 +56,11 @@ class PlayQuizTest {
         answers.add(answerOne);
         answers.add(answerTwo);
 
-        playQuiz.checkSubmittedAnswers(question, answers);
-        currentScore = playQuiz.getCurrentScore();
+        quizPlayer.checkSubmittedAnswers(question, answers);
+        currentScore = quizPlayer.getCurrentScore();
         assertEquals("Score: " + 1 + "/" + 2, currentScore);
 
-        question = playQuiz.getNextQuestion();
+        question = quizPlayer.getNextQuestion();
         answerOne = questionThree.getAnswers().get(0);
         answerTwo = questionThree.getAnswers().get(1);
 
@@ -68,20 +68,20 @@ class PlayQuizTest {
         answers.add(answerOne);
         answers.add(answerTwo);
 
-        playQuiz.checkSubmittedAnswers(question, answers);
-        currentScore = playQuiz.getCurrentScore();
+        quizPlayer.checkSubmittedAnswers(question, answers);
+        currentScore = quizPlayer.getCurrentScore();
         assertEquals("Score: " + 1 + "/" + 3, currentScore);
 
-        question = playQuiz.getNextQuestion();
+        question = quizPlayer.getNextQuestion();
         answerOne = questionFour.getAnswers().get(0);
 
         answers.clear();
         answers.add(answerOne);
 
-        playQuiz.checkSubmittedAnswers(question, answers);
-        currentScore = playQuiz.getCurrentScore();
+        quizPlayer.checkSubmittedAnswers(question, answers);
+        currentScore = quizPlayer.getCurrentScore();
         assertEquals("Score: " + 2 + "/" + 4, currentScore);
 
-        assertNull(playQuiz.getNextQuestion());
+        assertNull(quizPlayer.getNextQuestion());
     }
 }
