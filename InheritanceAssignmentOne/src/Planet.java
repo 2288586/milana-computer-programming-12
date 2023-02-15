@@ -58,6 +58,6 @@ public class Planet {
 
     @Override
     public String toString() {
-        return "Planet{orbitTime=" + orbitTime + ", moons=" + moons + ", designation='" + designation + "'}";
+        return "Planet Designation: '" + designation + "'";
     }
 }
