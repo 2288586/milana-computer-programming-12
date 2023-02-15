@@ -15,6 +15,7 @@
       <list>
         <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -37,6 +38,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
   }
 }</component>
@@ -128,7 +130,15 @@
       <workItem from="1676153760418" duration="5124000" />
       <workItem from="1676160340892" duration="5271000" />
       <workItem from="1676298986846" duration="130000" />
-      <workItem from="1676311448613" duration="826000" />
+      <workItem from="1676311448613" duration="1079000" />
+      <workItem from="1676313127253" duration="2919000" />
+      <workItem from="1676328776065" duration="101000" />
+      <workItem from="1676396633998" duration="219000" />
+      <workItem from="1676399722308" duration="2756000" />
+      <workItem from="1676405550576" duration="1991000" />
+      <workItem from="1676445384426" duration="414000" />
+      <workItem from="1676479124278" duration="266000" />
+      <workItem from="1676484265333" duration="238000" />
     </task>
     <servers />
   </component>

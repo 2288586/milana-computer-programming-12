@@ -1,0 +1,120 @@
+.root {
+    -fx-tab-colour: rgb(142, 131, 103);
+    -fx-tab-header-background-colour: rgb(114, 105, 83);
+    -fx-tab-pane-colour: rgb(118, 135, 125);
+
+    -fx-main-colour: rgb(157, 170, 162);
+    -fx-main-colour-light: rgb(244, 246, 245);
+
+    -fx-border-colour: rgb(255, 255, 255)
+}
+
+* {
+    -fx-font-family: "Avenir Next";
+    -fx-text-fill: rgb(70, 70, 70);
+}
+
+.tab {
+    -fx-background-color: -fx-tab-header-background-colour;
+    -fx-background-insets: 0;
+
+    -fx-border-color: -fx-border-colour;
+    -fx-border-width: 2px 2px 0px 2px;
+    -fx-border-radius: 2px 2px 0px 0px;
+}
+
+.tab:selected {
+    -fx-background-color: -fx-tab-colour;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: -fx-tab-header-background-colour;
+}
+
+.tab-pane {
+    -fx-background-color: -fx-tab-pane-colour;
+}
+
+.choice-box {
+    -fx-background-color: -fx-main-colour;
+    -fx-background-radius: 7px;
+    -fx-background-insets: 0;
+
+    -fx-border-color: -fx-border-colour;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.choice-box .arrow {
+    -fx-background-color: -fx-border-colour;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: -fx-main-colour-light;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: -fx-main-colour;
+}
+
+.text-field {
+    -fx-background-color: -fx-main-colour-light;
+    -fx-background-radius: 7px;
+    -fx-background-insets: 0;
+
+    -fx-border-color: -fx-border-colour;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.list-view {
+    -fx-background-color: -fx-border-colour;
+    -fx-background-radius: 7px;
+    -fx-background-insets: 0;
+
+    -fx-border-color: -fx-border-colour;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.list-cell:even {
+    -fx-background-color: -fx-main-colour;
+}
+
+.list-cell:odd {
+    -fx-background-color: -fx-tab-pane-colour;
+}
+
+.list-cell:selected {
+    -fx-background-color: -fx-main-colour-light;
+}
+
+.button {
+    -fx-font-size: 7pt;
+
+    -fx-background-color: -fx-main-colour;
+    -fx-background-radius: 7px;
+    -fx-background-insets: 0;
+
+    -fx-border-color: -fx-border-colour;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: -fx-tab-pane-colour;
+}
+
+.check-box .box {
+    -fx-background-color: -fx-main-colour;
+    -fx-background-radius: 7px;
+    -fx-background-insets: 0;
+
+    -fx-border-color: -fx-border-colour;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: -fx-border-colour;
+}
