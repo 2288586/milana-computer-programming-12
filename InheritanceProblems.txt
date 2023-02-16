@@ -1,0 +1,13 @@
+1. For the following programs, what are the compile time errors?
+A)
+B)
+C)
+D)
+
+2. What is the output of the following programs?
+A)
+B)
+C)
+D)
+E)
+F)
