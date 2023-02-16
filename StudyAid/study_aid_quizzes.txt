@@ -1,45 +1,107 @@
-2
-Quiz 1
-2
-Question 1
+3
+OOP Quiz
+3
+What Is Encapsulation?
 4
-Correct Answer 1
-true
-Incorrect Answer 1
+Defining Classes By Focusing On What Is Important For A Purpose
 false
-Correct Answer 3
+Hiding The Data And Implementation Details Within A Class
 true
-Incorrect Answer 3
+Making All Methods Private
 false
-Question 2
+Using Words To Define Classes
+false
+Which Type Of Constructor Cannot Have A Return Type?
 4
-Correct Answer 2
-true
-Incorrect Answer 2
+Default
 false
-Correct Answer 4
-true
-Incorrect Answer 4
+Copy
 false
-Quiz 2
-2
-Question 1
+Parameterized
+false
+Constructors Do Not Have A Return Type
+true
+When Is A Constructor Executed?
 4
-Correct Answer 1
+When An Object Is Created From A Class
 true
-Incorrect Answer 1
+When A Class Is Defined Using The Class Keyword
 false
-Correct Answer 2
-true
-Incorrect Answer 2
+Every Time An Object Is Referenced
 false
-Question 3
+Every Time An Object Is Used
+false
+Study Aid Quiz
+3
+When Is Data Saved To A File?
 4
-Correct Answer 3
-true
-Incorrect Answer 3
+Never
 false
-Correct Answer 4
+When The Save Button Is Clicked
+false
+When The Application Is Closed
 true
-Incorrect Answer 4
+After Making A Change
+false
+How Many Correct Answers Can A Question Have?
+4
+Zero
+true
+More Than Two
+true
+Four
+true
+Five
+false
+Is The Answer Order Randomized?
+4
+Always
+true
+Often
+false
+Sometimes
+false
+Never
+false
+Elementary Math Quiz
+4
+2 + 2 = ?
+4
+4
+true
+3
+false
+5
+false
+1
+false
+3 - 2 = ?
+4
+6
+false
+5
+false
+-1
+false
+1
+true
+7 * 4 = ?
+4
+28
+true
+36
+false
+11
+false
+3
+false
+9 / 3 = ?
+4
+3
+true
+6
+false
+12
+false
+27
 false

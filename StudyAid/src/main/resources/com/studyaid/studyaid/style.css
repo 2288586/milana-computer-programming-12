@@ -25,6 +25,7 @@
 
 .tab:selected {
     -fx-background-color: -fx-tab-colour;
+    -fx-focus-color: transparent;
 }
 
 .tab-pane .tab-header-area .tab-header-background {
