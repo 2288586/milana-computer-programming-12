@@ -48,7 +48,7 @@ public class Moon {
         if (object instanceof Moon) {
             Moon otherMoon = (Moon) object;
 
-            if (this.designation.equals(otherMoon.getDesignation())) {
+            if (this.designation.equals(otherMoon.designation)) {
                 return true;
             }
         }
@@ -58,6 +58,6 @@ public class Moon {
 
     @Override
     public String toString() {
-        return "Moon Designation: '" + designation + "'";
+        return designation;
     }
 }

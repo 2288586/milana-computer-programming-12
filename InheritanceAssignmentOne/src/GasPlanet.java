@@ -29,6 +29,6 @@ public class GasPlanet extends Planet {
 
     @Override
     public String toString() {
-        return "Gas Planet Designation: '" + this.getDesignation() + "'";
+        return getDesignation();
     }
 }

@@ -17,6 +17,6 @@ public class RockPlanet extends Planet {
 
     @Override
     public String toString() {
-        return "Rock Planet Designation: '" + this.getDesignation() + "'";
+        return getDesignation();
     }
 }
