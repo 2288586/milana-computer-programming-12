@@ -1,9 +1,42 @@
 1. Is the method properly overloaded?
 
+Yes, the method is properly overloaded.
+
+
+
 2. What is the output or outcome?
-A)
-B)
+
+A) ONE
+B) ClassCastException Because Instance Of Class Cannot Be Casted To Its Subclass
+
+Class Y
+Class Y
+Exception in thread "main" java.lang.ClassCastException: class Y cannot be cast to class Z (Y and Z are in unnamed module of loader 'app')
+	at MainClass.main(MainClass.java:39)
+
 C)
+
+1
+2
+4
+3
+
 D)
-E)
+
+4
+2
+1
+3
+
+E) StackOverflowError Because methodABC Calls methodXYZ Which Calls methodABC With No Exit Point, And Function Call Stack Has A Limit
+
+Exception in thread "main" java.lang.StackOverflowError
+	at ABC.methodABC(MainClass.java:5)
+	at XYZ.methodXYZ(MainClass.java:13)
+	at ABC.methodABC(MainClass.java:5)
+	at XYZ.methodXYZ(MainClass.java:13)...
+
 F)
+
+333
+444
