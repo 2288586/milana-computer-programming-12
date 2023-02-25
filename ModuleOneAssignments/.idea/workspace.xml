@@ -11,6 +11,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -31,12 +32,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/milana/git/computer-programming-12/ModuleOneAssignments/src/com/moduleoneassignments/moduleone/two",
+    "last_opened_file_path": "/Users/milana/git/computer-programming-12/ModuleOneAssignments/src/com/moduleoneassignments/moduleone/three",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/com/moduleoneassignments/moduleone/three" />
       <recent name="$PROJECT_DIR$/src/com/moduleoneassignments/moduleone/two" />
     </key>
   </component>
@@ -83,7 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1677177931489</updated>
       <workItem from="1677177936604" duration="1901000" />
-      <workItem from="1677288973946" duration="1951000" />
+      <workItem from="1677288973946" duration="2708000" />
     </task>
     <servers />
   </component>
