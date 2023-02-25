@@ -71,6 +71,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="com.moduleoneassignments.moduleone.three.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.moduleoneassignments.moduleone.three.Main" />
+      <module name="ModuleOneAssignments" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.moduleoneassignments.moduleone.three.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="com.moduleoneassignments.moduleone.two.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.moduleoneassignments.moduleone.two.Main" />
       <module name="ModuleOneAssignments" />
@@ -87,6 +100,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.com.moduleoneassignments.moduleone.four.Main" />
+        <item itemvalue="Application.com.moduleoneassignments.moduleone.three.Main" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.two.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -101,7 +115,7 @@
       <option name="presentableId" value="Default" />
       <updated>1677177931489</updated>
       <workItem from="1677177936604" duration="1901000" />
-      <workItem from="1677288973946" duration="3640000" />
+      <workItem from="1677288973946" duration="4247000" />
     </task>
     <servers />
   </component>
