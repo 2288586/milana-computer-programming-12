@@ -8,9 +8,12 @@ public class Triangle extends TwoDShape {
     public Triangle(double width, double height) {
         super(width, height);
 
-        side1 = 0;
-        side2 = 0;
-        side3 = 0;
+        //Pythagorean Theorem (Assumption: Isosceles Triangle)
+        double sideLength = Math.sqrt(Math.pow(width / 2, 2) + Math.pow(height, 2));
+
+        side1 = sideLength;
+        side2 = width;
+        side3 = sideLength;
     }
 
     public Triangle(double side1, double side2, double side3) {
@@ -32,6 +35,8 @@ public class Triangle extends TwoDShape {
     @Override
     public double getArea() {
         double semiPerimeter = (side1 + side2 + side3) / 2d;
+
+        //Heron's Formula
         double triangleArea = Math.sqrt(semiPerimeter * (semiPerimeter - side1) * (semiPerimeter - side2) * (semiPerimeter - side3));
 
         return triangleArea;
