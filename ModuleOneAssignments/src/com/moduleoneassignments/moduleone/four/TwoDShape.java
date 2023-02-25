@@ -6,6 +6,14 @@ public abstract class TwoDShape {
     double rotation;
     Colour colour;
 
+    /**
+     * Constructs a TwoDShape with the given width, height and colour.
+     * Sets TwoDShape rotation to 0 degrees.
+     *
+     * @param width  shape width.
+     * @param height shape height.
+     * @param colour shape colour.
+     */
     public TwoDShape(double width, double height, Colour colour) {
         this.width = width;
         this.height = height;
@@ -13,10 +21,18 @@ public abstract class TwoDShape {
         this.colour = colour;
     }
 
+    /**
+     * Constructs a TwoDShape with a width and height of 0, and no colour.
+     */
     public TwoDShape() {
         this(0, 0, Colour.NONE);
     }
 
+    /**
+     * Calculates and returns the shape's area.
+     *
+     * @return the shape's area.
+     */
     public abstract double getArea();
 
     public double getWidth() {

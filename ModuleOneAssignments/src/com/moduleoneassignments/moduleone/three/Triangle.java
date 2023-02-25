@@ -11,9 +11,9 @@ public class Triangle extends TwoDShape implements Rotate {
         //Pythagorean Theorem (Assumption: Isosceles Triangle)
         double sideLength = Math.sqrt(Math.pow(width / 2, 2) + Math.pow(height, 2));
 
-        side1 = sideLength;
-        side2 = width;
-        side3 = sideLength;
+        this.side1 = sideLength;
+        this.side2 = width;
+        this.side3 = sideLength;
     }
 
     public Triangle(double side1, double side2, double side3) {
@@ -21,8 +21,8 @@ public class Triangle extends TwoDShape implements Rotate {
         this.side2 = side2;
         this.side3 = side3;
 
-        width = side2;
-        height = heronsHeight();
+        this.width = side2;
+        this.height = heronsHeight();
     }
 
     private double heronsHeight() {
