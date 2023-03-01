@@ -19,6 +19,7 @@ public class CircleTest {
     @Test
     public void invalidNegativeRadiusInput() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Circle(-1, Colour.NONE));
+        assertEquals("All shape dimensions must be greater than or equal to zero.", exception.getMessage());
     }
 
     /**
@@ -27,6 +28,7 @@ public class CircleTest {
     @Test
     public void invalidNullColourInput() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Circle(1, null));
+        assertEquals("Colour cannot be null.", exception.getMessage());
     }
 
     /**

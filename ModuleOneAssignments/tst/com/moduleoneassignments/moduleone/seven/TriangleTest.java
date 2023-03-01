@@ -19,6 +19,7 @@ public class TriangleTest {
     @Test
     public void invalidNegativeWidthInput() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(-1, 1, Colour.NONE));
+        assertEquals("All shape dimensions must be greater than or equal to zero.", exception.getMessage());
     }
 
     /**
@@ -27,6 +28,7 @@ public class TriangleTest {
     @Test
     public void invalidNegativeHeightInput() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(1, -1, Colour.NONE));
+        assertEquals("All shape dimensions must be greater than or equal to zero.", exception.getMessage());
     }
 
     /**
@@ -35,6 +37,7 @@ public class TriangleTest {
     @Test
     public void invalidNegativeSideOneInput() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(-1, 1, 1, Colour.NONE));
+        assertEquals("All shape dimensions must be greater than or equal to zero.", exception.getMessage());
     }
 
     /**
@@ -43,6 +46,7 @@ public class TriangleTest {
     @Test
     public void invalidNegativeSideTwoInput() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(1, -1, 1, Colour.NONE));
+        assertEquals("All shape dimensions must be greater than or equal to zero.", exception.getMessage());
     }
 
     /**
@@ -51,6 +55,7 @@ public class TriangleTest {
     @Test
     public void invalidNegativeSideThreeInput() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(1, 1, -1, Colour.NONE));
+        assertEquals("All shape dimensions must be greater than or equal to zero.", exception.getMessage());
     }
 
     /**
@@ -59,6 +64,7 @@ public class TriangleTest {
     @Test
     public void invalidNullColourInputInWidthAndHeightConstructor() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(1, 1, null));
+        assertEquals("Colour cannot be null.", exception.getMessage());
     }
 
     /**
@@ -67,6 +73,7 @@ public class TriangleTest {
     @Test
     public void invalidNullColourInputInSideLengthConstructor() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(1, 1, 1, null));
+        assertEquals("Colour cannot be null.", exception.getMessage());
     }
 
     /**
@@ -75,6 +82,7 @@ public class TriangleTest {
     @Test
     public void invalidSideOneTriangleShape() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(3, 1, 1, Colour.NONE));
+        assertEquals("One side of a triangle cannot be bigger than the other two sides combined.", exception.getMessage());
     }
 
     /**
@@ -83,6 +91,7 @@ public class TriangleTest {
     @Test
     public void invalidSideTwoTriangleShape() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(1, 3, 1, Colour.NONE));
+        assertEquals("One side of a triangle cannot be bigger than the other two sides combined.", exception.getMessage());
     }
 
     /**
@@ -91,6 +100,7 @@ public class TriangleTest {
     @Test
     public void invalidSideThreeTriangleShape() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Triangle(1, 1, 3, Colour.NONE));
+        assertEquals("One side of a triangle cannot be bigger than the other two sides combined.", exception.getMessage());
     }
 
     /**
