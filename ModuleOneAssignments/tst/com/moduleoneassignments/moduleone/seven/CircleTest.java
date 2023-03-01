@@ -26,9 +26,7 @@ public class CircleTest {
      */
     @Test
     public void invalidNullColourInput() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Circle(1, null);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Circle(1, null));
     }
 
     /**
