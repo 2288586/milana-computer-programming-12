@@ -13,6 +13,9 @@
         <option value="Class" />
         <option value="Interface" />
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit3 Test Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -28,29 +31,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/milana/git/computer-programming-12/ModuleOneAssignments/src/com/moduleoneassignments/moduleone/four&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "/Users/milana/git/computer-programming-12/ModuleOneAssignments/src/com/moduleoneassignments/moduleone/seven",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/com/moduleoneassignments/moduleone/seven" />
       <recent name="$PROJECT_DIR$/src/com/moduleoneassignments/moduleone/four" />
       <recent name="$PROJECT_DIR$/src/com/moduleoneassignments/moduleone/three" />
       <recent name="$PROJECT_DIR$/src/com/moduleoneassignments/moduleone/two" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.moduleoneassignments.moduleone.seven" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.com.moduleoneassignments.moduleone.four.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.moduleoneassignments.moduleone.one.Main" />
+  <component name="RunManager" selected="Application.com.moduleoneassignments.moduleone.seven.Main">
+    <configuration name="com.moduleoneassignments.moduleone.four.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.moduleoneassignments.moduleone.four.Main" />
       <module name="ModuleOneAssignments" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.moduleoneassignments.moduleone.one.*" />
+          <option name="PATTERN" value="com.moduleoneassignments.moduleone.four.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -58,12 +77,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.moduleoneassignments.moduleone.four.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.moduleoneassignments.moduleone.four.Main" />
+    <configuration name="com.moduleoneassignments.moduleone.seven.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.moduleoneassignments.moduleone.seven.Main" />
       <module name="ModuleOneAssignments" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.moduleoneassignments.moduleone.four.*" />
+          <option name="PATTERN" value="com.moduleoneassignments.moduleone.seven.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,12 +116,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in ModuleOneAssignments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ModuleOneAssignments" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.com.moduleoneassignments.moduleone.seven.Main" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.four.Main" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.three.Main" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.two.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in ModuleOneAssignments" />
       </list>
     </recent_temporary>
   </component>
@@ -118,7 +146,8 @@
       <workItem from="1677288973946" duration="6951000" />
       <workItem from="1677297260355" duration="1559000" />
       <workItem from="1677692741660" duration="3849000" />
-      <workItem from="1677696675913" duration="361000" />
+      <workItem from="1677696675913" duration="519000" />
+      <workItem from="1677697437787" duration="4943000" />
     </task>
     <servers />
   </component>

@@ -30,19 +30,23 @@ public class Triangle extends TwoDShape {
     }
 
     private double heronsHeight() {
-        double triangleArea = getArea();
-        double heronsHeight = triangleArea * 2 / side2;
+        //If Width Is Zero, side1 = side3 = height
+        if (width == 0) {
+            return side1;
+        }
 
-        return heronsHeight;
-    }
-
-    @Override
-    public double getArea() {
         double semiPerimeter = (side1 + side2 + side3) / 2;
 
         //Heron's Formula
         double triangleArea = Math.sqrt(semiPerimeter * (semiPerimeter - side1) * (semiPerimeter - side2) * (semiPerimeter - side3));
 
+        double heronsHeight = triangleArea * 2 / width;
+        return heronsHeight;
+    }
+
+    @Override
+    public double getArea() {
+        double triangleArea = width * height * 0.5;
         return triangleArea;
     }
 }

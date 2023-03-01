@@ -30,6 +30,11 @@ public class Triangle extends TwoDShape {
     }
 
     private double heronsHeight() {
+        //If Width Is Zero, side1 = side3 = height
+        if (width == 0) {
+            return side1;
+        }
+
         double semiPerimeter = (side1 + side2 + side3) / 2;
 
         //Heron's Formula

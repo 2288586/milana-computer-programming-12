@@ -1,5 +1,8 @@
-package com.moduleoneassignments.moduleone.three;
+package com.moduleoneassignments.moduleone.seven;
 
+/**
+ * Triangle with three sides, width, height and rotation angle in degrees.
+ */
 public class Triangle extends TwoDShape implements Rotate {
     double side1;
     double side2;
@@ -7,8 +10,8 @@ public class Triangle extends TwoDShape implements Rotate {
 
     double angle;
 
-    public Triangle(double width, double height) {
-        super(width, height);
+    public Triangle(double width, double height, Colour colour) {
+        super(width, height, colour);
 
         //Pythagorean Theorem (Assumption: Isosceles Triangle)
         double sideLength = Math.sqrt(Math.pow(width / 2, 2) + Math.pow(height, 2));
@@ -20,7 +23,9 @@ public class Triangle extends TwoDShape implements Rotate {
         this.angle = 0;
     }
 
-    public Triangle(double side1, double side2, double side3) {
+    public Triangle(double side1, double side2, double side3, Colour colour) {
+        super(colour);
+
         validateDimension(side1);
         validateDimension(side2);
         validateDimension(side3);
@@ -31,10 +36,17 @@ public class Triangle extends TwoDShape implements Rotate {
 
         this.width = side2;
         this.height = heronsHeight();
-
         this.angle = 0;
     }
 
+    /**
+     * Calculates height using Heron's Formula, assuming second side is width.
+     * <blockquote><pre>
+     *     Heron's Formula: Triangle Area = sqrt(s*(s-side1)*(s-side2)*(s-side3))
+     *     Where s = Semi Perimeter Of Triangle</pre></blockquote>
+     *
+     * @return the triangle's height.
+     */
     private double heronsHeight() {
         //If Width Is Zero, side1 = side3 = height
         if (width == 0) {
@@ -50,6 +62,13 @@ public class Triangle extends TwoDShape implements Rotate {
         return heronsHeight;
     }
 
+    /**
+     * Calculates triangle area, assuming second side is width.
+     * <blockquote><pre>
+     *     Formula: Triangle Area = 0.5 * width * height</pre></blockquote>
+     *
+     * @return the triangle's area.
+     */
     @Override
     public double getArea() {
         double triangleArea = width * height * 0.5;
@@ -58,19 +77,30 @@ public class Triangle extends TwoDShape implements Rotate {
 
     @Override
     public String toString() {
-        return "Shape: Triangle, Side Lengths: " + side1 + ", " + side2 + ", " + side3;
+        return "Shape: Triangle, Side Lengths: " + side1 + ", " + side2 + ", " + side3 + ", Colour: " + colour;
     }
 
+    /**
+     * Rotates the triangle 90 degrees clockwise.
+     */
     @Override
     public void rotate90() {
         rotate(90);
     }
 
+    /**
+     * Rotates the triangle 180 degrees clockwise.
+     */
     @Override
     public void rotate180() {
         rotate(180);
     }
 
+    /**
+     * Rotates the triangle clockwise.
+     *
+     * @param angle in degrees (not radians).
+     */
     @Override
     public void rotate(double angle) {
         this.angle = angle;

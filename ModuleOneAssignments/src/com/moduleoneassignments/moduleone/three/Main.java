@@ -6,9 +6,12 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<TwoDShape> shapes = new ArrayList<>();
 
+        shapes.add(new Triangle(0, 0, 0));
         shapes.add(new Triangle(4, 5, 6));
+        shapes.add(new Triangle(0, 0));
         shapes.add(new Triangle(4, 5));
 
+        shapes.add(new Circle(0));
         shapes.add(new Circle(1));
         shapes.add(new Circle(2));
 
