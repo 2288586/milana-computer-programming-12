@@ -15,8 +15,8 @@ public abstract class TwoDShape {
         this.colour = colour;
     }
 
-    public TwoDShape() {
-        this(0, 0, Colour.NONE);
+    public TwoDShape(Colour colour) {
+        this(0, 0, colour);
     }
 
     /**

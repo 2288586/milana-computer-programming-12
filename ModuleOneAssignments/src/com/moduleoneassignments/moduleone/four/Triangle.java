@@ -24,14 +24,14 @@ public class Triangle extends TwoDShape implements Rotate {
     }
 
     public Triangle(double side1, double side2, double side3, Colour colour) {
+        super(colour);
+
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
 
         this.width = side2;
         this.height = heronsHeight();
-        this.colour = colour;
-
         this.angle = 0;
     }
 
