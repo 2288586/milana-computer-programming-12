@@ -1,18 +1,15 @@
 package com.moduleoneassignments.moduleone.four;
 
+/**
+ * Triangle with three sides, width, height and rotation angle in degrees.
+ */
 public class Triangle extends TwoDShape implements Rotate {
     double side1;
     double side2;
     double side3;
 
-    /**
-     * Constructs a triangle with the given width, height and colour.
-     * Calculates side length, assuming triangle is isosceles and second side is width.
-     *
-     * @param width  triangle width.
-     * @param height triangle height.
-     * @param colour triangle colour.
-     */
+    double angle;
+
     public Triangle(double width, double height, Colour colour) {
         super(width, height, colour);
 
@@ -22,17 +19,10 @@ public class Triangle extends TwoDShape implements Rotate {
         this.side1 = sideLength;
         this.side2 = width;
         this.side3 = sideLength;
+
+        this.angle = 0;
     }
 
-    /**
-     * Constructs a triangle with the given side lengths and colour.
-     * Assumes width is second side. Calculates height using {@link #heronsHeight()}.
-     *
-     * @param side1  triangle side.
-     * @param side2  triangle width.
-     * @param side3  triangle side.
-     * @param colour triangle colour.
-     */
     public Triangle(double side1, double side2, double side3, Colour colour) {
         this.side1 = side1;
         this.side2 = side2;
@@ -41,6 +31,8 @@ public class Triangle extends TwoDShape implements Rotate {
         this.width = side2;
         this.height = heronsHeight();
         this.colour = colour;
+
+        this.angle = 0;
     }
 
     /**
@@ -100,10 +92,10 @@ public class Triangle extends TwoDShape implements Rotate {
     /**
      * Rotates the triangle clockwise.
      *
-     * @param degree in degrees (not radians).
+     * @param angle in degrees (not radians).
      */
     @Override
-    public void rotate(double degree) {
-        rotation = degree;
+    public void rotate(double angle) {
+        this.angle = angle;
     }
 }

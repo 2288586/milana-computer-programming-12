@@ -1,5 +1,8 @@
 package com.moduleoneassignments.moduleone.four;
 
+/**
+ * Enumeration of predefined colours.
+ */
 public enum Colour {
     RED("Red"), GREEN("Green"), BLUE("Blue"), NONE("None");
 

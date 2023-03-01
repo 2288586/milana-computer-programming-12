@@ -1,15 +1,12 @@
 package com.moduleoneassignments.moduleone.four;
 
+/**
+ * Circle with radius, width and height.
+ */
 public class Circle extends TwoDShape {
     public final double PI = Math.PI;
     private double radius;
 
-    /**
-     * Constructs a circle with the given radius and colour. Sets circle width and circle height based on circle radius.
-     *
-     * @param radius circle radius.
-     * @param colour circle colour.
-     */
     Circle(double radius, Colour colour) {
         super(radius * 2, radius * 2, colour);
         this.radius = radius;

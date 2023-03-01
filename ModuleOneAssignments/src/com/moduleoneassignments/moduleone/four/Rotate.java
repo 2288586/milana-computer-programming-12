@@ -1,5 +1,8 @@
 package com.moduleoneassignments.moduleone.four;
 
+/**
+ * Interface for objects that can rotate.
+ */
 public interface Rotate {
     /**
      * Rotates the object 90 degrees clockwise.
@@ -14,7 +17,7 @@ public interface Rotate {
     /**
      * Rotates the object clockwise.
      *
-     * @param degree in degrees (not radians).
+     * @param angle in degrees (not radians).
      */
-    void rotate(double degree);
+    void rotate(double angle);
 }

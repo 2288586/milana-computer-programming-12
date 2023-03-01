@@ -4,13 +4,9 @@ public abstract class TwoDShape {
     double width;
     double height;
 
-    double rotation;
-
     public TwoDShape(double width, double height) {
         this.width = width;
         this.height = height;
-
-        this.rotation = 0;
     }
 
     public TwoDShape() {
