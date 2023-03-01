@@ -30,6 +30,8 @@ public class Triangle extends TwoDShape implements Rotate {
         validateDimension(side2);
         validateDimension(side3);
 
+        validateTriangleSides(side1, side2, side3);
+
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
@@ -104,5 +106,18 @@ public class Triangle extends TwoDShape implements Rotate {
     @Override
     public void rotate(double angle) {
         this.angle = angle;
+    }
+
+    /**
+     * Checks that the triangle is valid by ensuring that each side is not bigger than the two other sides combined.
+     *
+     * @param side1 triangle side.
+     * @param side2 triangle width.
+     * @param side3 triangle side.
+     */
+    private void validateTriangleSides(double side1, double side2, double side3) {
+        if (side1 > side2 + side3 || side2 > side1 + side3 || side3 > side1 + side2) {
+            throw new IllegalArgumentException("One side of a triangle cannot be bigger than the other two sides combined.");
+        }
     }
 }

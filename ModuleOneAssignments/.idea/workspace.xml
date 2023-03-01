@@ -63,7 +63,7 @@
       <recent name="com.moduleoneassignments.moduleone.seven" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ModuleOneAssignments">
+  <component name="RunManager" selected="Application.com.moduleoneassignments.moduleone.two.Main">
     <configuration name="com.moduleoneassignments.moduleone.four.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.moduleoneassignments.moduleone.four.Main" />
       <module name="ModuleOneAssignments" />
@@ -126,11 +126,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in ModuleOneAssignments" />
+        <item itemvalue="Application.com.moduleoneassignments.moduleone.two.Main" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.seven.Main" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.four.Main" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.three.Main" />
-        <item itemvalue="Application.com.moduleoneassignments.moduleone.two.Main" />
+        <item itemvalue="JUnit.All in ModuleOneAssignments" />
       </list>
     </recent_temporary>
   </component>
@@ -147,7 +147,7 @@
       <workItem from="1677297260355" duration="1559000" />
       <workItem from="1677692741660" duration="3849000" />
       <workItem from="1677696675913" duration="519000" />
-      <workItem from="1677697437787" duration="5615000" />
+      <workItem from="1677697437787" duration="6193000" />
     </task>
     <servers />
   </component>
