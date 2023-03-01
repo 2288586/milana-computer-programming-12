@@ -36,35 +36,33 @@ public class Triangle extends TwoDShape implements Rotate {
     }
 
     /**
-     * Calculates height using triangle area, assuming second side is width.
-     * Triangle area is calculated using {@link #getArea()}.
-     * <blockquote><pre>
-     *     Triangle Height = Triangle Area*2/Triangle Width</pre></blockquote>
-     *
-     * @return the triangle's height.
-     */
-    private double heronsHeight() {
-        double triangleArea = getArea();
-        double heronsHeight = triangleArea * 2 / side2;
-
-        return heronsHeight;
-    }
-
-    /**
-     * Calculates area using Heron's Formula.
+     * Calculates height using Heron's Formula, assuming second side is width.
      * <blockquote><pre>
      *     Heron's Formula: Triangle Area = sqrt(s*(s-side1)*(s-side2)*(s-side3))
      *     Where s = Semi Perimeter Of Triangle</pre></blockquote>
      *
-     * @return the triangle's area.
+     * @return the triangle's height.
      */
-    @Override
-    public double getArea() {
+    private double heronsHeight() {
         double semiPerimeter = (side1 + side2 + side3) / 2;
 
         //Heron's Formula
         double triangleArea = Math.sqrt(semiPerimeter * (semiPerimeter - side1) * (semiPerimeter - side2) * (semiPerimeter - side3));
 
+        double heronsHeight = triangleArea * 2 / width;
+        return heronsHeight;
+    }
+
+    /**
+     * Calculates triangle area, assuming second side is width.
+     * <blockquote><pre>
+     *     Formula: Triangle Area = 0.5 * width * height</pre></blockquote>
+     *
+     * @return the triangle's area.
+     */
+    @Override
+    public double getArea() {
+        double triangleArea = width * height * 0.5;
         return triangleArea;
     }
 
