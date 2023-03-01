@@ -5,6 +5,9 @@ public abstract class TwoDShape {
     double height;
 
     public TwoDShape(double width, double height) {
+        validateDimension(width);
+        validateDimension(height);
+
         this.width = width;
         this.height = height;
     }
@@ -20,6 +23,7 @@ public abstract class TwoDShape {
     }
 
     public void setWidth(double width) {
+        validateDimension(width);
         this.width = width;
     }
 
@@ -28,6 +32,13 @@ public abstract class TwoDShape {
     }
 
     public void setHeight(double height) {
+        validateDimension(height);
         this.height = height;
+    }
+
+    protected void validateDimension(double dimension) {
+        if (dimension < 0) {
+            throw new IllegalArgumentException("All shape dimensions must be greater than or equal to zero.");
+        }
     }
 }

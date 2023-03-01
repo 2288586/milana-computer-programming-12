@@ -21,6 +21,10 @@ public class Triangle extends TwoDShape implements Rotate {
     }
 
     public Triangle(double side1, double side2, double side3) {
+        validateDimension(side1);
+        validateDimension(side2);
+        validateDimension(side3);
+
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
