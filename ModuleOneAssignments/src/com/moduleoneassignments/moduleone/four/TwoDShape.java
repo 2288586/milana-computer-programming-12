@@ -51,6 +51,12 @@ public abstract class TwoDShape {
         this.height = height;
     }
 
+    /**
+     * Checks if the dimension is greater than or equal to zero.
+     *
+     * @param dimension
+     * @throws IllegalArgumentException if the dimension is less than zero
+     */
     protected void validateDimension(double dimension) {
         if (dimension < 0) {
             throw new IllegalArgumentException("All shape dimensions must be greater than or equal to zero.");
