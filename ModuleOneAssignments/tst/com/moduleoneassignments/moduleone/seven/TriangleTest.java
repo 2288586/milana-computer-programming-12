@@ -158,7 +158,7 @@ public class TriangleTest {
     }
 
     /**
-     * Tests {@link Triangle#getArea()} method for valid zero side1, side 2 and side 3 input (0).
+     * Tests {@link Triangle#getArea()} method for valid zero side1, side2 and side3 input (0).
      */
     @Test
     public void getAreaZeroSidesInSideLengthConstructor() {
@@ -176,7 +176,7 @@ public class TriangleTest {
     }
 
     /**
-     * Tests {@link Triangle#getArea()} method for valid flat triangle side lengths (2, 1, 1).
+     * Tests {@link Triangle#getArea()} method for valid flat triangle side lengths (1, 2, 1).
      */
     @Test
     public void getAreaFlatSideTwoTriangleShape() {
@@ -185,7 +185,7 @@ public class TriangleTest {
     }
 
     /**
-     * Tests {@link Triangle#getArea()} method for valid flat triangle side lengths (2, 1, 1).
+     * Tests {@link Triangle#getArea()} method for valid flat triangle side lengths (1, 1, 2).
      */
     @Test
     public void getAreaFlatSideThreeTriangleShape() {

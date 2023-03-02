@@ -5,5 +5,5 @@ public interface Rotate {
 
     void rotate180();
 
-    void rotate(double angle);
+    void rotate(double degree);
 }

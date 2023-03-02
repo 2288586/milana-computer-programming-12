@@ -17,7 +17,7 @@ public interface Rotate {
     /**
      * Rotates the object clockwise.
      *
-     * @param angle in degrees (not radians).
+     * @param degree in degrees (not radians).
      */
-    void rotate(double angle);
+    void rotate(double degree);
 }

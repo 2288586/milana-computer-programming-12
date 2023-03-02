@@ -54,7 +54,7 @@ public abstract class TwoDShape {
     /**
      * Checks if the dimension is greater than or equal to zero.
      *
-     * @param dimension
+     * @param dimension dimension of two-dimensional shape.
      * @throws IllegalArgumentException if the dimension is less than zero
      */
     protected void validateDimension(double dimension) {

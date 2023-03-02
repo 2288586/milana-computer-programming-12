@@ -74,8 +74,8 @@ public class Triangle extends TwoDShape implements Rotate {
     }
 
     @Override
-    public void rotate(double angle) {
-        this.angle = angle;
+    public void rotate(double degree) {
+        this.angle = degree;
     }
 
     private void validateTriangleSides(double side1, double side2, double side3) {

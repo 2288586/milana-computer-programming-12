@@ -101,11 +101,11 @@ public class Triangle extends TwoDShape implements Rotate {
     /**
      * Rotates the triangle clockwise.
      *
-     * @param angle in degrees (not radians).
+     * @param degree in degrees (not radians).
      */
     @Override
-    public void rotate(double angle) {
-        this.angle = angle;
+    public void rotate(double degree) {
+        this.angle = degree;
     }
 
     /**

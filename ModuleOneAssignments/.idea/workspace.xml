@@ -31,23 +31,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "/Users/milana/git/computer-programming-12/ModuleOneAssignments/src/com/moduleoneassignments/moduleone/seven",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/milana/git/computer-programming-12/ModuleOneAssignments/src/com/moduleoneassignments/moduleone/seven&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/com/moduleoneassignments/moduleone/seven" />
@@ -63,7 +63,7 @@
       <recent name="com.moduleoneassignments.moduleone.seven" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.moduleoneassignments.moduleone.seven.Main">
+  <component name="RunManager" selected="JUnit.All in ModuleOneAssignments">
     <configuration name="com.moduleoneassignments.moduleone.four.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.moduleoneassignments.moduleone.four.Main" />
       <module name="ModuleOneAssignments" />
@@ -126,11 +126,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.moduleoneassignments.moduleone.seven.Main" />
+        <item itemvalue="JUnit.All in ModuleOneAssignments" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.four.Main" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.three.Main" />
         <item itemvalue="Application.com.moduleoneassignments.moduleone.two.Main" />
-        <item itemvalue="JUnit.All in ModuleOneAssignments" />
+        <item itemvalue="Application.com.moduleoneassignments.moduleone.seven.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -148,6 +148,7 @@
       <workItem from="1677692741660" duration="3849000" />
       <workItem from="1677696675913" duration="519000" />
       <workItem from="1677697437787" duration="7312000" />
+      <workItem from="1677723370733" duration="1084000" />
     </task>
     <servers />
   </component>
