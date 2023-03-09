@@ -1,5 +1,8 @@
 package com.moduletwoassignments.moduleone;
 
+/**
+ * Planet class with designation, mass, orbit time and planet type.
+ */
 public class Planet {
     private String designation;
     private double massKg;

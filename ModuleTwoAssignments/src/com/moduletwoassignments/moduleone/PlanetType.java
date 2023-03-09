@@ -1,5 +1,8 @@
 package com.moduletwoassignments.moduleone;
 
+/**
+ * Enumeration of predefined planet types.
+ */
 public enum PlanetType {
     GAS("Gas"), ROCK("Rock"), ICE("Ice");
 
