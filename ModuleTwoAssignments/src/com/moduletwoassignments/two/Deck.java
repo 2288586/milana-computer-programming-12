@@ -86,4 +86,9 @@ public class Deck {
 
         shuffle();
     }
+
+    @Override
+    public String toString() {
+        return "Deck Of " + deck.size() + " Cards";
+    }
 }

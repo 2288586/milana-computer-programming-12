@@ -14,7 +14,7 @@ public class FaceCard extends Card {
         super(number, cardSuit);
 
         if (name == null) {
-            throw new IllegalArgumentException("Face card must have a name.");
+            throw new IllegalArgumentException("Face card name cannot be null.");
         }
 
         this.name = name;
