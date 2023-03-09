@@ -1,30 +1,34 @@
 package com.moduletwoassignments.moduletwo;
 
 import java.util.Collections;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class DeckBuilder {
+public class Deck {
     private LinkedList<Card> cards;
 
-    DeckBuilder() {
+    Deck() {
         cards = new LinkedList<>();
         createNewDeck();
     }
 
-    public ArrayList<Card> drawHand() {
-        ArrayList<Card> hand = new ArrayList<>(7);
-
-        for (int i = 0; i < 7; i++) {
-            hand.add(cards.pollLast());
-        }
-
+    public Hand drawHand() {
+        Hand hand = drawHand(7);
         return hand;
     }
 
-    public LinkedList<Card> shuffle() {
+    public Hand drawHand(int numOfCards) {
+        LinkedList<Card> cards = new LinkedList<>();
+
+        for (int i = 0; i < numOfCards; i++) {
+            cards.add(cards.pollLast());
+        }
+
+        Hand hand = new Hand(cards);
+        return hand;
+    }
+
+    public void shuffle() {
         Collections.shuffle(cards);
-        return cards;
     }
 
     private void createNewDeck() {
@@ -51,5 +55,7 @@ public class DeckBuilder {
         cards.add(new FaceCard(CardFace.KING, CardSuit.SPADES));
         cards.add(new FaceCard(CardFace.KING, CardSuit.HEARTS));
         cards.add(new FaceCard(CardFace.KING, CardSuit.DIAMONDS));
+
+        shuffle();
     }
 }

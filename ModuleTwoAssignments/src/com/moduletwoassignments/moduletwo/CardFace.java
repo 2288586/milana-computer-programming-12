@@ -1,22 +1,12 @@
 package com.moduletwoassignments.moduletwo;
 
 public enum CardFace {
-    JACK("Jack", 11), QUEEN("Queen", 12), KING("King", 13);
+    JACK("Jack"), QUEEN("Queen"), KING("King");
 
     private final String name;
-    private int number;
 
-    CardFace(String name, int number) {
+    CardFace(String name) {
         this.name = name;
-        this.number = number;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 
     @Override

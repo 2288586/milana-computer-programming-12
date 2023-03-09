@@ -4,7 +4,11 @@ public class FaceCard extends Card {
     CardFace name;
 
     FaceCard(CardFace name, CardSuit cardSuit) {
-        super(name.getNumber(), cardSuit);
+        this(name, 10, cardSuit);
+    }
+
+    FaceCard(CardFace name, int number, CardSuit cardSuit) {
+        super(number, cardSuit);
         this.name = name;
     }
 
@@ -13,7 +17,7 @@ public class FaceCard extends Card {
         if (object instanceof FaceCard) {
             FaceCard other = (FaceCard) object;
 
-            if (this.name == other.name && this.cardSuit == other.cardSuit) {
+            if (this.name == other.name && this.number == other.number && this.cardSuit == other.cardSuit) {
                 return true;
             }
         }

@@ -10,18 +10,9 @@ public abstract class Card {
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (object instanceof Card) {
-            Card other = (Card) object;
+    public abstract boolean equals(Object object);
 
-            if (this.number == other.number && this.cardSuit == other.cardSuit) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
+    @Override
     public int hashCode() {
         String hashcode = number + cardSuit.toString();
         return hashcode.hashCode();
