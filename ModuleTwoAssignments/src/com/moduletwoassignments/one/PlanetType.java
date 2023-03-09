@@ -1,4 +1,4 @@
-package com.moduletwoassignments.moduleone;
+package com.moduletwoassignments.one;
 
 /**
  * Enumeration of predefined planet types.

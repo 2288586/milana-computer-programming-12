@@ -1,4 +1,4 @@
-package com.moduletwoassignments.moduletwo;
+package com.moduletwoassignments.two;
 
 /**
  * Enumeration of predefined card faces.

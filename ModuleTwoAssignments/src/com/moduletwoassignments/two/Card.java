@@ -1,4 +1,4 @@
-package com.moduletwoassignments.moduletwo;
+package com.moduletwoassignments.two;
 
 /**
  * Base class for cards.

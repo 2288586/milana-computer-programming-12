@@ -1,4 +1,4 @@
-package com.moduletwoassignments.moduleone;
+package com.moduletwoassignments.one;
 
 /**
  * Planet class with designation, mass, orbit time and planet type.

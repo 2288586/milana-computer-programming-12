@@ -1,4 +1,4 @@
-package com.moduletwoassignments.moduletwo;
+package com.moduletwoassignments.two;
 
 /**
  * Face card with a name, number and suit.

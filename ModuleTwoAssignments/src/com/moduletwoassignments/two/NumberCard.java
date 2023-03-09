@@ -1,4 +1,4 @@
-package com.moduletwoassignments.moduletwo;
+package com.moduletwoassignments.two;
 
 /**
  * Number card with a number and suit.
