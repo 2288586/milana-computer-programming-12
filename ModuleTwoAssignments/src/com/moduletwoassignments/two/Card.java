@@ -8,6 +8,14 @@ public abstract class Card {
     CardSuit cardSuit;
 
     Card(int number, CardSuit cardSuit) {
+        if (number <= 0) {
+            throw new IllegalArgumentException("Card number must be greater than zero.");
+        }
+
+        if (cardSuit == null) {
+            throw new IllegalArgumentException("Card suit can not be null.");
+        }
+
         this.number = number;
         this.cardSuit = cardSuit;
     }

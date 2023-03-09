@@ -12,6 +12,11 @@ public class FaceCard extends Card {
 
     FaceCard(CardFace name, int number, CardSuit cardSuit) {
         super(number, cardSuit);
+
+        if (name == null) {
+            throw new IllegalArgumentException("Face card must have a name.");
+        }
+
         this.name = name;
     }
 

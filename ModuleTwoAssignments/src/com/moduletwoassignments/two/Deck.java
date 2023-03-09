@@ -33,6 +33,10 @@ public class Deck {
      * @return a hand with cards.
      */
     public Hand drawHand(int numOfCards) {
+        if (numOfCards <= 0) {
+            throw new IllegalArgumentException("The number of drawn cards must be greater than zero.");
+        }
+
         LinkedList<Card> cards = new LinkedList<>();
 
         for (int i = 0; i < numOfCards; i++) {
