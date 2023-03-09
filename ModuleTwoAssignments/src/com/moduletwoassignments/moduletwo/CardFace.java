@@ -1,5 +1,8 @@
 package com.moduletwoassignments.moduletwo;
 
+/**
+ * Enumeration of predefined card faces.
+ */
 public enum CardFace {
     JACK("Jack"), QUEEN("Queen"), KING("King");
 

@@ -1,5 +1,8 @@
 package com.moduletwoassignments.moduletwo;
 
+/**
+ * Face card with a name, number and suit.
+ */
 public class FaceCard extends Card {
     CardFace name;
 

@@ -1,5 +1,8 @@
 package com.moduletwoassignments.moduletwo;
 
+/**
+ * Number card with a number and suit.
+ */
 public class NumberCard extends Card {
 
     NumberCard(int number, CardSuit cardSuit) {

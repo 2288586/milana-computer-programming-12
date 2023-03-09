@@ -1,5 +1,8 @@
 package com.moduletwoassignments.moduletwo;
 
+/**
+ * Base class for cards.
+ */
 public abstract class Card {
     int number;
     CardSuit cardSuit;
