@@ -10,10 +10,10 @@ public class CompareByCardSuit implements Comparator<Card> {
 
     @Override
     public int compare(Card cardOne, Card cardTwo) {
-        if (cardOne.cardSuit.getSortingValue() < cardTwo.cardSuit.getSortingValue()) {
+        if (cardOne.cardSuit.getSortingValue() > cardTwo.cardSuit.getSortingValue()) {
             return 1;
 
-        } else if (cardOne.cardSuit.getSortingValue() > cardTwo.cardSuit.getSortingValue()) {
+        } else if (cardOne.cardSuit.getSortingValue() < cardTwo.cardSuit.getSortingValue()) {
             return -1;
         }
 

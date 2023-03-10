@@ -10,10 +10,10 @@ public class CompareByCardNumber implements Comparator<Card> {
 
     @Override
     public int compare(Card cardOne, Card cardTwo) {
-        if (cardOne.number > cardTwo.number) {
+        if (cardOne.number < cardTwo.number) {
             return 1;
 
-        } else if (cardOne.number < cardTwo.number) {
+        } else if (cardOne.number > cardTwo.number) {
             return -1;
         }
 

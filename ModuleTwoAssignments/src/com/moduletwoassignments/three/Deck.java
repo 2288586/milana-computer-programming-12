@@ -128,6 +128,6 @@ public class Deck {
 
     @Override
     public String toString() {
-        return "Deck Of " + deck.size() + " Cards";
+        return "Deck Of " + deck.size() + " Cards:\n" + deck.toString();
     }
 }
