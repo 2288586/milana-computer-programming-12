@@ -88,6 +88,24 @@ public class Deck {
     }
 
     @Override
+    public boolean equals(Object object) {
+        if (object instanceof Deck) {
+            Deck other = (Deck) object;
+
+            if (this.deck == other.deck) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hashCode = deck.hashCode();
+        return hashCode;
+    }
+
+    @Override
     public String toString() {
         return "Deck Of " + deck.size() + " Cards";
     }
