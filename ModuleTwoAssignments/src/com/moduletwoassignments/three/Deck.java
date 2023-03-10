@@ -1,6 +1,7 @@
 package com.moduletwoassignments.three;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -54,6 +55,26 @@ public class Deck {
      */
     public void shuffle() {
         Collections.shuffle(deck);
+    }
+
+    /**
+     * Sorts the deck of cards by the suit of the cards.
+     *
+     * @see CompareByCardSuit
+     */
+    public void sortDeckBySuits() {
+        CompareByCardSuit comparator = new CompareByCardSuit();
+        Collections.sort(deck, comparator);
+    }
+
+    /**
+     * Sorts the deck of cards by the numerical values of the cards.
+     *
+     * @see CompareByCardNumber
+     */
+    public void sortDeckByNumbers() {
+        CompareByCardNumber comparator = new CompareByCardNumber();
+        Collections.sort(deck, comparator);
     }
 
     /**
