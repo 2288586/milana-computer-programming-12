@@ -3,8 +3,7 @@ package com.moduletwoassignments.three;
 import java.util.Comparator;
 
 /**
- * Compares the cards based on the numerical values of the cards.
- * Cards are sorted greatest to least.
+ * Compares the cards based on the numerical values of the cards from greatest to least.
  */
 public class CompareByCardNumber implements Comparator<Card> {
 

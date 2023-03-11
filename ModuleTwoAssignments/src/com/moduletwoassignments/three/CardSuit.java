@@ -1,21 +1,15 @@
 package com.moduletwoassignments.three;
 
 /**
- * Enumeration of predefined card suits.
+ * Enumeration of predefined card suits in the following order: Spades, Hearts, Clubs, Diamonds.
  */
 public enum CardSuit {
-    CLUBS("Clubs", 2), SPADES("Spades", 0), HEARTS("Hearts", 1), DIAMONDS("Diamonds", 3);
+    SPADES("Spades"), HEARTS("Hearts"), CLUBS("Clubs"), DIAMONDS("Diamonds");
 
     private final String suit;
-    private final int sortingValue;
 
-    CardSuit(String suit, int sortingValue) {
+    CardSuit(String suit) {
         this.suit = suit;
-        this.sortingValue = sortingValue;
-    }
-
-    public int getSortingValue() {
-        return sortingValue;
     }
 
     @Override
