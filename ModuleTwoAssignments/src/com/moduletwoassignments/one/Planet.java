@@ -10,11 +10,27 @@ public class Planet {
     private PlanetType type;
 
     public Planet(String designation, PlanetType type) {
+        if (designation == null || type == null) {
+            throw new IllegalArgumentException("Both designation and type must be specified.");
+        }
+
         this.designation = designation;
         this.type = type;
     }
 
     public Planet(String designation, double massKg, double orbitEarthYears, PlanetType type) {
+        if (designation == null || type == null) {
+            throw new IllegalArgumentException("Both designation and type must be specified.");
+        }
+
+        if (massKg <= 0) {
+            throw new IllegalArgumentException("Mass must be more than zero.");
+        }
+
+        if (orbitEarthYears <= 0) {
+            throw new IllegalArgumentException("Orbit must be more than zero.");
+        }
+
         this.designation = designation;
         this.massKg = massKg;
         this.orbitEarthYears = orbitEarthYears;
