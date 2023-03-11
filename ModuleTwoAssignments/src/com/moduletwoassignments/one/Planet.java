@@ -41,6 +41,6 @@ public class Planet {
 
     @Override
     public String toString() {
-        return "Planet{designation='" + designation + "', type='" + type + "'}";
+        return "Planet Designation = '" + designation + "', Planet Type = '" + type + "'";
     }
 }
