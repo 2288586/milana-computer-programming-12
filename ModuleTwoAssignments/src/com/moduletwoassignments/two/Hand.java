@@ -1,15 +1,15 @@
 package com.moduletwoassignments.two;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  * Hand of cards.
  */
 public class Hand {
 
-    private LinkedList<Card> cards;
+    private final ArrayList<Card> cards;
 
-    Hand(LinkedList<Card> cards) {
+    Hand(ArrayList<Card> cards) {
         this.cards = cards;
     }
 
@@ -34,6 +34,6 @@ public class Hand {
 
     @Override
     public String toString() {
-        return "Hand Of " + cards.size() + " Cards";
+        return "Hand Of " + cards.size() + " Cards:\n" + cards.toString();
     }
 }

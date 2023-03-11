@@ -1,19 +1,23 @@
 package com.moduletwoassignments.three;
 
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  * Deck of cards.
  */
 public class Deck {
-    private LinkedList<Card> deck;
+    private final LinkedList<Card> deck;
 
     Deck() {
         deck = new LinkedList<>();
         createNewDeck();
+    }
+
+    Deck(List<Card> deck) {
+        this.deck = new LinkedList<>(deck);
     }
 
     /**
@@ -28,7 +32,7 @@ public class Deck {
     }
 
     /**
-     * Creates a hand that contains the specified number of cards. Cards are drawn from the end of the deck.
+     * Creates a hand that contains the specified number of cards. Cards are drawn from the top of the deck.
      *
      * @param numOfCards the number of cards in the deck.
      * @return a hand with cards.
@@ -38,10 +42,14 @@ public class Deck {
             throw new IllegalArgumentException("The number of drawn cards must be greater than zero.");
         }
 
-        LinkedList<Card> cards = new LinkedList<>();
+        if (numOfCards > deck.size()) {
+            throw new IllegalArgumentException("Not enough cards left in the deck.");
+        }
+
+        ArrayList<Card> cards = new ArrayList<>();
 
         for (int i = 0; i < numOfCards; i++) {
-            cards.add(cards.pollLast());
+            cards.add(deck.pollLast());
         }
 
         Hand hand = new Hand(cards);
@@ -51,10 +59,12 @@ public class Deck {
     /**
      * Shuffles the deck of cards.
      *
+     * @return the deck of cards.
      * @see Collections#shuffle(List)
      */
-    public void shuffle() {
+    public Deck shuffle() {
         Collections.shuffle(deck);
+        return this;
     }
 
     /**
@@ -83,27 +93,15 @@ public class Deck {
     private void createNewDeck() {
         deck.clear();
 
-        for (int i = 0; i < 10; i++) {
-            deck.add(new NumberCard(i + 1, CardSuit.CLUBS));
-            deck.add(new NumberCard(i + 1, CardSuit.SPADES));
-            deck.add(new NumberCard(i + 1, CardSuit.HEARTS));
-            deck.add(new NumberCard(i + 1, CardSuit.DIAMONDS));
+        for (CardSuit cardSuit : CardSuit.values()) {
+            for (int i = 1; i <= 10; i++) {
+                deck.add(new NumberCard(i, cardSuit));
+            }
+
+            for (CardFace cardFace : CardFace.values()) {
+                deck.add(new FaceCard(cardFace, cardSuit));
+            }
         }
-
-        deck.add(new FaceCard(CardFace.JACK, CardSuit.CLUBS));
-        deck.add(new FaceCard(CardFace.JACK, CardSuit.SPADES));
-        deck.add(new FaceCard(CardFace.JACK, CardSuit.HEARTS));
-        deck.add(new FaceCard(CardFace.JACK, CardSuit.DIAMONDS));
-
-        deck.add(new FaceCard(CardFace.QUEEN, CardSuit.CLUBS));
-        deck.add(new FaceCard(CardFace.QUEEN, CardSuit.SPADES));
-        deck.add(new FaceCard(CardFace.QUEEN, CardSuit.HEARTS));
-        deck.add(new FaceCard(CardFace.QUEEN, CardSuit.DIAMONDS));
-
-        deck.add(new FaceCard(CardFace.KING, CardSuit.CLUBS));
-        deck.add(new FaceCard(CardFace.KING, CardSuit.SPADES));
-        deck.add(new FaceCard(CardFace.KING, CardSuit.HEARTS));
-        deck.add(new FaceCard(CardFace.KING, CardSuit.DIAMONDS));
 
         shuffle();
     }

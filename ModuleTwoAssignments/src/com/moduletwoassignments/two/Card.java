@@ -4,8 +4,8 @@ package com.moduletwoassignments.two;
  * Base class for cards.
  */
 public abstract class Card {
-    int number;
-    CardSuit cardSuit;
+    protected final int number;
+    protected final CardSuit cardSuit;
 
     Card(int number, CardSuit cardSuit) {
         if (number <= 0) {
@@ -13,7 +13,7 @@ public abstract class Card {
         }
 
         if (cardSuit == null) {
-            throw new IllegalArgumentException("Card suit can not be null.");
+            throw new IllegalArgumentException("Card suit must be specified.");
         }
 
         this.number = number;

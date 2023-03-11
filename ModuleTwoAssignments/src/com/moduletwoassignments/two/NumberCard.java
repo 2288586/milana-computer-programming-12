@@ -7,6 +7,10 @@ public class NumberCard extends Card {
 
     NumberCard(int number, CardSuit cardSuit) {
         super(number, cardSuit);
+
+        if (number > 10) {
+            throw new IllegalArgumentException("Card number must be less than or equal to ten.");
+        }
     }
 
     @Override

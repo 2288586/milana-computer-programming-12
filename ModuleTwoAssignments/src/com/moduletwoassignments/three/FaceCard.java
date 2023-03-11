@@ -4,7 +4,7 @@ package com.moduletwoassignments.three;
  * Face card with a name, number and suit.
  */
 public class FaceCard extends Card {
-    CardFace name;
+    protected final CardFace name;
 
     FaceCard(CardFace name, CardSuit cardSuit) {
         this(name, 10, cardSuit);
@@ -14,7 +14,7 @@ public class FaceCard extends Card {
         super(number, cardSuit);
 
         if (name == null) {
-            throw new IllegalArgumentException("Face card name cannot be null.");
+            throw new IllegalArgumentException("Card face must be specified.");
         }
 
         this.name = name;
@@ -25,7 +25,7 @@ public class FaceCard extends Card {
         if (object instanceof FaceCard) {
             FaceCard other = (FaceCard) object;
 
-            if (this.name == other.name && this.number == other.number && this.cardSuit == other.cardSuit) {
+            if (this.name == other.name && this.cardSuit == other.cardSuit) {
                 return true;
             }
         }
